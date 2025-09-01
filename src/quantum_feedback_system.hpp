@@ -68,7 +68,7 @@ namespace AnantaDigital::Feedback {
     };
 
     // Система реального времени с обратной связью
-    class RealtimeFeedbackSystem {
+    class QuantumFeedbackSystem {
     private:
         std::vector<TimestampedSignal> playback_buffer_;
         std::vector<TimestampedSignal> feedback_buffer_;

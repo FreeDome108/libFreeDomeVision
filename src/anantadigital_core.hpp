@@ -114,6 +114,15 @@ namespace AnantaDigital {
         double dome_height_;
         double quantum_uncertainty_;
         bool is_initialized_;
+        
+        // Системы обработки
+        std::unique_ptr<Feedback::RealtimeFeedbackSystem> quantum_feedback_system_;
+        std::unique_ptr<ConsciousnessHybrid> consciousness_hybrid_;
+        std::unique_ptr<ConsciousnessIntegration> consciousness_integration_;
+        
+        // Буферы обработки
+        std::vector<double> processing_buffer_;
+        std::vector<double> output_buffer_;
 
     public:
         AnantaDigitalCore(double radius, double height);
@@ -140,6 +149,12 @@ namespace AnantaDigital {
         
         // Обновление системы
         void update(double dt);
+        
+        // Обработка аудио сигнала
+        void processAudioSignal(const std::vector<double>& input_signal);
+        
+        // Получение версии
+        std::string getVersion() const;
         
         // Получение статистики системы
         struct SystemStatistics {
