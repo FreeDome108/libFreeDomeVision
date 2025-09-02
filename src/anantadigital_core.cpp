@@ -155,17 +155,6 @@ std::string AnantaDigitalCore::getVersion() const {
 
 
 
-void AnantaDigitalCore::reset() {
-    processing_buffer_.clear();
-    output_buffer_.clear();
-    quantum_feedback_system_.reset();
-    consciousness_hybrid_.reset();
-    consciousness_integration_.reset();
-}
 
-// Static factory method
-std::unique_ptr<AnantaDigitalCore> AnantaDigitalCore::create(double sample_rate, double dome_radius, double dome_height) {
-    return std::make_unique<AnantaDigitalCore>(sample_rate, dome_radius, dome_height);
-}
 
 } // namespace AnantaDigital

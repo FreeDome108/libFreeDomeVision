@@ -9,18 +9,18 @@ ConsciousnessIntegration::ConsciousnessIntegration(double karmic_weight, double 
     : karmic_weight_(karmic_weight)
     , mercy_capacity_(mercy_capacity)
     , initialized_(false)
-    , integration_level_(0.0)
-    , coherence_factor_(0.0)
     , integration_buffer_()
     , coherence_buffer_()
     , integrated_signal_()
+    , integration_level_(0.0)
+    , coherence_factor_(0.0)
 {
     integration_buffer_.reserve(1024);
     coherence_buffer_.reserve(1024);
     integrated_signal_.reserve(1024);
 }
 
-ConsciousnessIntegration::~ConsciousnessIntegration() = default;
+
 
 void ConsciousnessIntegration::processConsciousness(const std::vector<double>& input_signal) {
     if (input_signal.empty()) return;

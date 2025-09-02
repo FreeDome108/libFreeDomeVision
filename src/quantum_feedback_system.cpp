@@ -131,32 +131,8 @@ std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const 
 
 
 
-std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const {
-    return quantum_oscillator_.empty() ? feedback_buffer_ : quantum_oscillator_;
-}
 
-double Feedback::QuantumFeedbackSystem::getCoherenceFactor() const {
-    return coherence_factor_;
-}
 
-Feedback::QuantumFeedbackSystem::QuantumState Feedback::QuantumFeedbackSystem::getQuantumState() const {
-    return quantum_state_;
-}
 
-void Feedback::QuantumFeedbackSystem::setQuantumThreshold(double threshold) {
-    quantum_threshold_ = std::clamp(threshold, 0.0, 1.0);
-}
-
-void Feedback::QuantumFeedbackSystem::setEntanglementStrength(double strength) {
-    entanglement_strength_ = std::clamp(strength, 0.0, 1.0);
-}
-
-void Feedback::QuantumFeedbackSystem::reset() {
-    coherence_factor_ = 1.0;
-    entanglement_strength_ = 0.0;
-    quantum_state_ = QuantumState::COHERENT;
-    feedback_buffer_.clear();
-    quantum_oscillator_.clear();
-}
 
 } // namespace AnantaDigital
