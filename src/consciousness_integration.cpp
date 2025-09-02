@@ -5,9 +5,10 @@
 
 namespace AnantaDigital {
 
-ConsciousnessIntegration::ConsciousnessIntegration(double integration_threshold, double coherence_weight)
-    : integration_threshold_(integration_threshold)
-    , coherence_weight_(coherence_weight)
+ConsciousnessIntegration::ConsciousnessIntegration(double karmic_weight, double mercy_capacity)
+    : karmic_weight_(karmic_weight)
+    , mercy_capacity_(mercy_capacity)
+    , initialized_(false)
     , integration_level_(0.0)
     , coherence_factor_(0.0)
     , integration_buffer_()
@@ -21,21 +22,44 @@ ConsciousnessIntegration::ConsciousnessIntegration(double integration_threshold,
 
 ConsciousnessIntegration::~ConsciousnessIntegration() = default;
 
-void ConsciousnessIntegration::integrateConsciousness(const std::vector<double>& quantum_signal,
-                                                   const std::vector<double>& hybrid_signal) {
-    if (quantum_signal.empty() || hybrid_signal.empty()) return;
+void ConsciousnessIntegration::processConsciousness(const std::vector<double>& input_signal) {
+    if (input_signal.empty()) return;
     
     // Calculate integration level
-    integration_level_ = calculateIntegrationLevel(quantum_signal, hybrid_signal);
+    integration_level_ = calculateIntegrationLevel(input_signal, input_signal);
     
     // Calculate coherence factor
-    coherence_factor_ = calculateCoherenceFactor(quantum_signal, hybrid_signal);
+    coherence_factor_ = calculateCoherenceFactor(input_signal, input_signal);
     
     // Process integration
-    processIntegration(quantum_signal, hybrid_signal);
+    processIntegration(input_signal, input_signal);
     
     // Apply coherence integration
     applyCoherenceIntegration();
+}
+
+void ConsciousnessIntegration::processIntegration(const std::vector<double>& quantum_signal,
+                                               const std::vector<double>& hybrid_signal) {
+    if (quantum_signal.empty() || hybrid_signal.empty()) return;
+    
+    integrated_signal_.clear();
+    integrated_signal_.reserve(std::min(quantum_signal.size(), hybrid_signal.size()));
+    
+    size_t min_size = std::min(quantum_signal.size(), hybrid_signal.size());
+    for (size_t i = 0; i < min_size; ++i) {
+        double integrated_sample = (quantum_signal[i] * karmic_weight_ + 
+                                  hybrid_signal[i] * mercy_capacity_) / 2.0;
+        integrated_signal_.push_back(integrated_sample);
+    }
+}
+
+void ConsciousnessIntegration::applyCoherenceIntegration() {
+    if (integrated_signal_.empty()) return;
+    
+    // Apply coherence-based integration
+    for (auto& sample : integrated_signal_) {
+        sample *= (1.0 + coherence_factor_ * 0.1);
+    }
 }
 
 double ConsciousnessIntegration::calculateIntegrationLevel(const std::vector<double>& signal1,
@@ -105,98 +129,7 @@ double ConsciousnessIntegration::calculateCoherenceFactor(const std::vector<doub
     return (phase_coherence * 0.6) + (amplitude_coherence * 0.4);
 }
 
-void ConsciousnessIntegration::processIntegration(const std::vector<double>& quantum_signal,
-                                                const std::vector<double>& hybrid_signal) {
-    integration_buffer_.clear();
-    integration_buffer_.reserve(quantum_signal.size());
-    
-    for (size_t i = 0; i < quantum_signal.size(); ++i) {
-        // Weighted integration based on integration level
-        double integrated_sample = (quantum_signal[i] * integration_level_) + 
-                                 (hybrid_signal[i] * (1.0 - integration_level_));
-        
-        // Apply integration enhancement
-        if (integration_level_ > integration_threshold_) {
-            integrated_sample *= (1.0 + integration_level_ * 0.15);
-        }
-        
-        integration_buffer_.push_back(integrated_sample);
-    }
-}
 
-void ConsciousnessIntegration::applyCoherenceIntegration() {
-    if (integration_buffer_.empty()) return;
-    
-    coherence_buffer_.clear();
-    coherence_buffer_.reserve(integration_buffer_.size());
-    
-    for (size_t i = 0; i < integration_buffer_.size(); ++i) {
-        double coherent_sample = integration_buffer_[i];
-        
-        // Apply coherence-based enhancement
-        if (coherence_factor_ > 0.7) {
-            // High coherence - enhance signal
-            coherent_sample *= (1.0 + coherence_factor_ * 0.2);
-            
-            // Add coherence resonance
-            double resonance = std::sin(2.0 * M_PI * i * coherence_factor_ / 50.0);
-            coherent_sample += resonance * 0.05 * coherence_weight_;
-        } else if (coherence_factor_ > 0.3) {
-            // Medium coherence - moderate enhancement
-            coherent_sample *= (1.0 + coherence_factor_ * 0.1);
-        } else {
-            // Low coherence - minimal enhancement
-            coherent_sample *= (0.95 + coherence_factor_ * 0.05);
-        }
-        
-        coherence_buffer_.push_back(coherent_sample);
-    }
-    
-    // Final integration
-    integrated_signal_.clear();
-    integrated_signal_.reserve(coherence_buffer_.size());
-    
-    for (size_t i = 0; i < coherence_buffer_.size(); ++i) {
-        double final_sample = coherence_buffer_[i];
-        
-        // Apply final integration effects
-        if (integration_level_ > 0.8 && coherence_factor_ > 0.8) {
-            // High integration and coherence - quantum consciousness effects
-            double quantum_effect = std::cos(integration_level_ * M_PI * i / 100.0);
-            final_sample += quantum_effect * 0.03 * coherence_weight_;
-        }
-        
-        integrated_signal_.push_back(final_sample);
-    }
-}
-
-std::vector<double> ConsciousnessIntegration::getIntegratedSignal() const {
-    return integrated_signal_.empty() ? coherence_buffer_ : integrated_signal_;
-}
-
-double ConsciousnessIntegration::getIntegrationLevel() const {
-    return integration_level_;
-}
-
-double ConsciousnessIntegration::getCoherenceFactor() const {
-    return coherence_factor_;
-}
-
-void ConsciousnessIntegration::setIntegrationThreshold(double threshold) {
-    integration_threshold_ = std::clamp(threshold, 0.0, 1.0);
-}
-
-void ConsciousnessIntegration::setCoherenceWeight(double weight) {
-    coherence_weight_ = std::clamp(weight, 0.0, 1.0);
-}
-
-void ConsciousnessIntegration::reset() {
-    integration_level_ = 0.0;
-    coherence_factor_ = 0.0;
-    integration_buffer_.clear();
-    coherence_buffer_.clear();
-    integrated_signal_.clear();
-}
 
 double ConsciousnessIntegration::getKarmicWeight() const {
     return karmic_weight_;

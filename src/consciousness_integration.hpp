@@ -29,8 +29,23 @@ private:
     bool initialized_;
     std::vector<double> integrated_buffer_;
     
+    // Дополнительные буферы
+    std::vector<double> integration_buffer_;
+    std::vector<double> coherence_buffer_;
+    std::vector<double> integrated_signal_;
+    
+    // Состояние интеграции
+    double integration_level_;
+    double coherence_factor_;
+    
     void balanceConsciousness();
     void applyMercyPrinciple();
+    
+    // Внутренние методы
+    double calculateIntegrationLevel(const std::vector<double>& signal1, const std::vector<double>& signal2);
+    double calculateCoherenceFactor(const std::vector<double>& signal1, const std::vector<double>& signal2);
+    void processIntegration(const std::vector<double>& quantum_signal, const std::vector<double>& hybrid_signal);
+    void applyCoherenceIntegration();
 };
 
 } // namespace AnantaDigital

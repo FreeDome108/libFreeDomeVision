@@ -8,6 +8,13 @@
 
 namespace AnantaDigital::Feedback {
 
+    // Квантовые состояния
+    enum class QuantumState {
+        COHERENT,
+        PARTIALLY_COHERENT,
+        INCOHERENT
+    };
+
     // Состояния квантово-временной задержки
     enum class QuantumDelayState {
         SYNCHRONOUS,        // Синхронное состояние (нулевая задержка)
@@ -71,7 +78,7 @@ namespace AnantaDigital::Feedback {
     class QuantumFeedbackSystem {
     private:
         std::vector<TimestampedSignal> playback_buffer_;
-        std::vector<TimestampedSignal> feedback_buffer_;
+        std::vector<double> feedback_buffer_;
         std::queue<TimestampedSignal> processing_queue_;
         
         std::unique_ptr<QuantumTemporalAnalyzer> temporal_analyzer_;

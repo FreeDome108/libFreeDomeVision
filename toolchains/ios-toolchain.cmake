@@ -1,0 +1,17 @@
+# iOS toolchain file for anAntaDigital
+set(CMAKE_SYSTEM_NAME iOS)
+set(CMAKE_OSX_DEPLOYMENT_TARGET 11.0)
+set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64")
+
+# Set compiler flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -Wall -Wextra -O3")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC -Wall -Wextra -O3")
+
+# iOS-specific properties
+set(CMAKE_XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH NO)
+set(CMAKE_XCODE_ATTRIBUTE_ENABLE_BITCODE NO)
+set(CMAKE_XCODE_ATTRIBUTE_VALIDATE_PRODUCT YES)
+
+# Disable tests and examples for iOS
+set(BUILD_TESTS OFF CACHE BOOL "Build tests" FORCE)
+set(BUILD_EXAMPLES OFF CACHE BOOL "Build examples" FORCE)

@@ -1,376 +1,261 @@
-# 🎵 anAntaDigital
+# anAntaDigital
 
-**Квантовая система интерференционных полей для купольных театров - электрические технологии**
+Библиотека для квантовой акустической обработки и сознательной интеграции.
 
-## 📌 О проекте
+## Поддерживаемые платформы
 
-**anAntaDigital** — это C++ библиотека, использующая принципы квантовой физики и интерференционных полей для создания уникального трансформационного аудио опыта в купольных театрах и планетариях. **Использует только электрические технологии** без механических устройств.
+- **Linux** - Ubuntu, Debian, CentOS, RHEL
+- **macOS** - 10.14+ (Mojave и новее)
+- **iOS** - 11.0+ (iPhone, iPad)
+- **Android** - API 21+ (Android 5.0+)
+- **Avrora** - AVR микроконтроллеры (ATmega328p)
+- **Windows** - Windows 10/11, Visual Studio 2019+
 
-### 🌟 Технологии
-- **Квантовые звуковые поля** с состояниями суперпозиции и запутанности
-- **Интерференционная обработка** для точного позиционирования звука
-- **Гибридная система сознания** с кластерной динамикой и принципом милости
-- **Акустическое моделирование** купольных пространств
-- **🔄 Система обратной связи в реальном времени** с квантово-физическим анализом временных разрывов
-- **🧠 Квантово-информационная коррекция** цифровых данных на основе сознания участников
-- **⚡ Только электрические технологии** - без механических устройств
+## Требования
 
-### 🎯 Основная задача
+### Общие требования
+- CMake 3.16+
+- C++17 совместимый компилятор
+- Threads библиотека
 
-Создание **трансформационного аудио пространства** для каждого участника в куполе, где звук работает как инструмент эволюции сознания. Система формирует многомерное звуковое поле, интегрирующее:
+### Платформо-специфичные требования
 
-- 🏛️ **Акустику полусферического помещения**
-- 👥 **Состояние сознания участников** 
-- ⚡ **Кармические кластеры и их динамику**
-- 🕊️ **Духовные поля милости и сострадания**
-- 📐 **Геометрию купола и материалов отделки**
-- 🌡️ **Температуру, влажность и энергетику пространства**
+#### Linux
+- GCC 7+ или Clang 6+
+- make, pkg-config
 
----
+#### macOS
+- Xcode Command Line Tools
+- Clang (входит в Xcode)
 
-## 🔧 Архитектура системы
+#### iOS
+- Xcode 12+
+- iOS SDK 11.0+
 
-### 🎛️ Основные компоненты
+#### Android
+- Android NDK 25.2+
+- CMake 3.16+
+- Переменная окружения `ANDROID_NDK_HOME`
 
-1. **AnantaSoundCore** — ядро квантовой обработки звука
-2. **HybridConsciousnessSystem** — гибридная система сознания
-3. **KarmicClusterDynamics** — кластерная динамика для кармических источников
-4. **SpiritualMercyPrinciple** — принцип милости для духовных источников
-5. **InterferenceField** — интерференционные поля различных типов
-6. **DomeAcousticResonator** — акустический резонатор купола
-7. **QuantumSoundField** — квантовые звуковые поля
-8. **🔄 RealtimeFeedbackSystem** — система обратной связи в реальном времени
-9. **🧠 QuantumTemporalAnalyzer** — анализатор квантовых временных разрывов
-10. **📊 DigitalInformationCorrector** — корректор цифровой информации
+#### Avrora
+- avr-gcc
+- avr-g++
 
-### 🌀 Гибридная архитектура сознания
+#### Windows
+- Visual Studio 2019+ или MinGW-w64
+- CMake 3.16+
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                    AnantaSoundCore + Feedback System                            │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│  HybridConsciousness ←→ Audio ←→ RealtimeFeedback                                │
-│           ↕                    ↕           ↕                                   │
-│  ┌─────────────────┐         ┌─────────────────┐                               │
-│  │ KarmicClusters  │         │ QuantumTemporal │                               │
-│  │ (136.1 Hz OM)   │⚖️      │ Analyzer        │                               │
-│  │ Кластерная      │50/      │ Временные       │                               │
-│  │ динамика        │50       │ разрывы         │                               │
-│  └─────────────────┘         └─────────────────┘                               │
-│           ↓                            ↓                                       │
-│  [Растворение кармы]           [Квантовая коррекция]                            │
-│                                    ↓                                           │
-│                         ┌─────────────────┐                                   │
-│                         │ DigitalCorrector│                                   │
-│                         │ 📊 Информация   │                                   │
-│                         │ на основе       │                                   │
-│                         │ сознания        │                                   │
-│                         └─────────────────┘                                   │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
+## Быстрая сборка
 
-### 🔬 Квантовые состояния звука и сознания
-- **COHERENT** — когерентное состояние (чистое сознание, гармония)
-- **SUPERPOSITION** — квантовая суперпозиция (переходные состояния)
-- **ENTANGLED** — запутанное состояние (связь между сознаниями)
-- **COLLAPSED** — коллапсированное состояние (кармические блоки)
-
-### 🧠 Типы источников сознания
-- **KARMIC** — кармические источники (обрабатываются кластерной динамикой)
-- **SPIRITUAL** — духовные источники (обрабатываются принципом милости)
-- **HYBRID** — смешанные источники (обрабатываются обеими системами)
-
----
-
-## 🔄 Система обратной связи с квантово-физическим анализом
-
-### 🧠 Принцип работы обратной связи
-
-AnantaDigital использует революционный подход к обработке обратной связи, основанный на **квантово-физическом анализе временных разрывов**. Система не только воспроизводит звук, но и непрерывно снимает сигналы в момент проигрывания, анализируя возникающие временные задержки.
-
-### ⏱️ Квантовые временные разрывы
-
-С точки зрения квантовой физики, временной разрыв между воспроизведением и обратной связью создает **информационное окно**, в которое человеческое сознание может получать дополнительную информацию. Система анализирует эти окна и корректирует цифровую информацию в реальном времени.
-
-#### 🔬 Основные принципы:
-
-- **Планковское время** — минимальный квант времени для анализа
-- **Полоса сознания** — частотный диапазон восприятия человека (0.1-60 Гц)  
-- **Информационная емкость разрыва** — количество данных, доступных сознанию
-- **Вероятность доступа** — шанс получения информации из временного окна
-
-### 📊 Квантово-информационная коррекция
-
-```cpp
-// Пример использования системы обратной связи
-#include "quantum_feedback_system.hpp"
-
-using namespace AnantaDigital::Feedback;
-
-// Создание системы с обратной связью
-auto feedback_system = std::make_unique<RealtimeFeedbackSystem>(
-    std::chrono::microseconds(50000), // Номинальная задержка 50мс
-    0.8  // Чувствительность 80%
-);
-
-// Инициализация
-feedback_system->initialize();
-
-// Воспроизведение с одновременным захватом обратной связи
-TimestampedSignal original_signal = createAudioSignal();
-feedback_system->playbackSignal(original_signal);
-
-// Захват обратной связи
-TimestampedSignal feedback_signal = feedback_system->captureSignal(listener_position);
-
-// Получение скорректированных сигналов
-auto corrected_signals = feedback_system->getCorrectedSignals();
-```
-
-### 🎯 Типы состояний задержки
-
-- **SYNCHRONOUS** — синхронное состояние (нулевая задержка)
-- **TEMPORAL_SHIFT** — классическая временная задержка
-- **QUANTUM_TUNNEL** — квантовое туннелирование (отрицательная задержка)
-- **SUPERPOSITION_DELAY** — суперпозиция временных состояний
-
----
-
-## 🎵 Типы аудиооборудования
-
-### 🔊 Динамики
-
-- **FullRange** — полнодиапазонные динамики
-- **Woofer** — НЧ динамики (низкие частоты)
-- **Midrange** — СЧ динамики (средние частоты)  
-- **Tweeter** — ВЧ динамики (высокие частоты)
-- **Subwoofer** — сабвуферы (сверхнизкие частоты)
-- **LineArray** — линейные массивы
-- **PointSource** — точечные источники
-- **Custom** — настраиваемые типы
-
-### 🎤 Микрофоны
-
-- **Calibration** — калибровочные микрофоны
-- **Measurement** — измерительные микрофоны
-- **Ambient** — микрофоны окружающего звука
-- **Directional** — направленные микрофоны
-- **Omnidirectional** — всенаправленные микрофоны
-- **Shotgun** — микрофоны-пушки
-- **Lapel** — петличные микрофоны
-
----
-
-## ⚙️ Конфигурация
-
-### 🔌 Подключение к серверу
-
-```cpp
-AnantaDigitalConfig {
-    enabled: true,
-    server_address: "127.0.0.1",
-    server_port: 8080,
-    api_key: Some("your-api-key"),
-    sync_enabled: true,
-    auto_discovery: true,
-}
-```
-
-### 🎚️ Настройка зон
-
-Система поддерживает создание множественных аудиозон для точного контроля звукового поля:
-
-- **Master Volume** — общая громкость зоны
-- **EQ Settings** — эквалайзер для коррекции частот
-- **Delay** — задержка для синхронизации
-- **Mute Control** — отключение звука
-
----
-
-## 🚀 Использование
-
-### 💻 C++ API с гибридной системой сознания
-
-```cpp
-#include "anantasound_core.hpp"
-#include "consciousness_hybrid.hpp"
-#include "consciousness_integration.hpp"
-
-using namespace AnantaDigital;
-using namespace AnantaDigital::Consciousness;
-using namespace AnantaDigital::Integration;
-
-// Создание интегрированной системы для купола 15м радиусом
-ConsciousnessAudioSystem system(15.0, 12.0);
-system.initialize();
-
-// Создание узла сознания
-ConsciousnessNode participant;
-participant.id = 1;
-participant.position = {5.0, PI/4, 0.0, 3.0};
-participant.karmic_weight = 0.7;        // Высокий кармический вес
-participant.mercy_capacity = 0.3;       // Низкая способность к милости
-participant.spiritual_resonance = 0.4;  // Средний духовный резонанс
-
-// Добавление участника в систему
-system.addConsciousnessSource(participant);
-
-// Основной цикл обработки
-double dt = 1.0/60.0; // 60 FPS
-system.processConsciousnessAudioFrame(dt);
-
-// Получение сбалансированного аудио
-auto balanced_fields = system.getBalancedAudioOutput();
-
-// Проверка баланса системы
-auto stats = system.getSystemStatistics();
-if (stats.is_harmonically_balanced) {
-    std::cout << "Система сбалансирована! Соотношение: " 
-              << stats.consciousness_stats.balance_ratio << std::endl;
-}
-```
-
-### 🎯 Ключевые функции API
-
-- **Гибридная система сознания** — баланс кармы и милости
-- **Кластерная динамика** — автоматическое формирование и растворение кармических кластеров
-- **Принцип милости** — создание полей сострадания и исцеления
-- **Квантовые звуковые поля** — с уникальными состояниями сознания
-- **Пространственное позиционирование** — точное размещение звука в куполе
-- **Терапевтические программы** — персонализированные сессии трансформации
-- **🔄 Система обратной связи** — квантово-временной анализ
-- **📊 Коррекция цифровой информации** — на основе сознания участников
-
----
-
-## 🎼 Терапевтические частоты и программы
-
-### 🧘 Основные частоты трансформации
-
-| Частота | Назначение | Тип воздействия |
-|---------|------------|-----------------|
-| **136.1 Hz** | OM - Растворение кармы | Кластерная динамика |
-| **432.0 Hz** | Вселенская гармония | Баланс систем |
-| **528.0 Hz** | Любовь и исцеление | Принцип милости |
-| **698.5 Hz** | Сострадание (432×φ) | Поле сострадания |
-| **963.0 Hz** | Божественная связь | Духовная милость |
-
-### 🔄 Терапевтические программы
-
-```cpp
-// Программа очищения кармы
-auto karmic_session = TherapeuticSoundProgram::createTherapySession(
-    TherapyType::KARMIC_CLEANSING, 
-    center_position, 
-    20.0 // 20 минут
-);
-
-// Программа духовного возвышения  
-auto spiritual_session = TherapeuticSoundProgram::createTherapySession(
-    TherapyType::SPIRITUAL_ELEVATION,
-    center_position,
-    30.0 // 30 минут
-);
-
-// Программа эмоционального баланса
-auto balance_session = TherapeuticSoundProgram::createTherapySession(
-    TherapyType::EMOTIONAL_BALANCE,
-    center_position, 
-    25.0 // 25 минут
-);
-```
-
-### 📊 Мониторинг эффективности
-
-- **Анализ кармической нагрузки** — отслеживание снижения кармических блоков
-- **Измерение духовного роста** — рост способности к милости и состраданию
-- **Балансировка системы** — поддержание равновесия 50/50
-- **Персонализация** — адаптация частот под индивидуальные особенности
-
----
-
-## 🔮 Будущее развитие
-
-### 📋 Планируемые возможности
-
-- [x] **Квантовые интерференционные поля** — ✅ Реализовано в v1.0
-- [x] **Акустическое моделирование купола** — ✅ Реализовано в v1.0  
-- [x] **Гибридная система сознания** — ✅ Реализовано в v2.0
-- [x] **Кластерная динамика кармы** — ✅ Реализовано в v2.0
-- [x] **Принцип милости** — ✅ Реализовано в v2.0
-- [x] **🔄 Система обратной связи в реальном времени** — ✅ Реализовано в v2.1
-- [x] **🧠 Квантово-временной анализ** — ✅ Реализовано в v2.1
-- [x] **📊 Коррекция цифровой информации** — ✅ Реализовано в v2.1
-- [ ] **AI-анализ эмоциональных состояний** — планируется v2.2
-- [ ] **Квантовая запутанность в реальном времени** — планируется v2.2
-- [ ] **Голографические аудио-проекции** — планируется v3.0
-- [ ] **Коллективные медитативные поля** — концептуальная стадия
-
-### 🎯 Интеграции
-
-- **REW (Room EQ Wizard)** — анализ акустики помещения
-- **Внешние аудио API** — интеграция с профессиональным оборудованием
-- **MIDI контроллеры** — физическое управление параметрами сознания
-- **Биометрические датчики** — мониторинг состояния участников
-- **AI системы анализа эмоций** — автоматическая настройка терапии
-- **🔄 Системы реального времени** — интеграция с аудио-драйверами для обратной связи
-- **📊 Системы сбора данных** — захват и анализ цифровой информации
-- **🧠 Нейроинтерфейсы** — прямая связь с активностью мозга участников
-
----
-
-## 🛠️ Техническая информация
-
-### 📊 Поддерживаемые форматы
-
-- **Stereo 2.0** — стандартное стерео
-- **Surround 5.1** — окружающий звук
-- **Surround 7.1** — расширенный окружающий звук  
-- **Dolby Atmos** — объемный звук
-- **Custom** — настраиваемые конфигурации
-
-### 🔗 Совместимость
-
-- **Операционные системы**: Windows, macOS, Linux
-- **Аудио подсистемы**: ALSA, PulseAudio, JACK, CoreAudio, WASAPI
-- **Сетевые протоколы**: TCP/IP, API REST
-- **Форматы данных**: JSON, TOML конфигурации
-
----
-
-## 📚 Документация и сборка
-
-### 🔧 Быстрый старт
+### Сборка для всех платформ
 
 ```bash
-# Клонирование проекта
-cd /Users/anton/proj/libs/anAntaSound/anAntaDigital
+# Сделать скрипт исполняемым
+chmod +x build_all_platforms.sh
 
-# Сборка проекта
-mkdir build && cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j$(nproc)
+# Собрать для всех платформ
+./build_all_platforms.sh
 
-# Запуск демонстрации
-./anantadigital_demo
-./quantum_acoustic_demo
+# Или для конкретной платформы
+./build_all_platforms.sh linux
+./build_all_platforms.sh macos
+./build_all_platforms.sh ios
+./build_all_platforms.sh android
+./build_all_platforms.sh avrora
+./build_all_platforms.sh windows
 ```
 
-### 📖 Документация
+### Индивидуальные скрипты сборки
 
-#### 🏗️ Сборка и установка
-- [BUILD.md](BUILD.md) — подробные инструкции по сборке
+#### Linux
+```bash
+chmod +x build_linux.sh
+./build_linux.sh
+```
 
-#### 🧠 Система сознания  
-- [CONSCIOUSNESS_COHERENCE.md](docs/CONSCIOUSNESS_COHERENCE.md) — локализованная когерентность в системе сознания
-- [API_REFERENCE.md](docs/API_REFERENCE.md) — полный справочник API v2.0
+#### macOS
+```bash
+chmod +x build_macos.sh
+./build_macos.sh
+```
 
-#### 💻 Разработка
-- [Исходный код](src/) — C++ реализация библиотеки
-- [EXAMPLES.md](docs/EXAMPLES.md) — практические примеры использования
-- [Примеры](examples/) — демонстрационные приложения
+#### iOS
+```bash
+chmod +x build_ios.sh
+./build_ios.sh
+```
 
----
+#### Android
+```bash
+chmod +x build_android.sh
+./build_android.sh
+```
 
-**© 2024 anAntaDigital Project - Quantum Audio Technologies**  
-*"Где наука встречается с душой"* 🌟
+#### Avrora
+```bash
+chmod +x build_avrora.sh
+./build_avrora.sh
+```
+
+#### Windows
+```cmd
+build_windows.bat
+```
+
+## Ручная сборка с CMake
+
+### Linux/macOS
+```bash
+mkdir build && cd build
+cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_SHARED_LIBS=ON \
+    -DBUILD_TESTS=ON \
+    -DBUILD_EXAMPLES=ON \
+    -DENABLE_QUANTUM_FEEDBACK=ON
+make -j$(nproc)
+make test
+sudo make install
+```
+
+### iOS
+```bash
+mkdir build_ios && cd build_ios
+cmake .. \
+    -DCMAKE_SYSTEM_NAME=iOS \
+    -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
+    -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" \
+    -DBUILD_SHARED_LIBS=OFF \
+    -DBUILD_TESTS=OFF \
+    -DBUILD_EXAMPLES=OFF
+make -j$(sysctl -n hw.ncpu)
+```
+
+### Android
+```bash
+mkdir build_android && cd build_android
+cmake .. \
+    -DCMAKE_SYSTEM_NAME=Android \
+    -DCMAKE_SYSTEM_VERSION=21 \
+    -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
+    -DCMAKE_ANDROID_NDK=$ANDROID_NDK_HOME \
+    -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang
+make -j$(nproc)
+```
+
+### Avrora
+```bash
+mkdir build_avrora && cd build_avrora
+cmake .. \
+    -DCMAKE_SYSTEM_NAME=Avrora \
+    -DCMAKE_CXX_COMPILER=avr-g++ \
+    -DCMAKE_C_COMPILER=avr-gcc \
+    -DCMAKE_CXX_FLAGS="-mmcu=atmega328p -Os" \
+    -DBUILD_SHARED_LIBS=OFF
+make -j$(nproc)
+```
+
+## Структура проекта
+
+```
+anAntaDigital/
+├── src/                    # Исходный код
+│   ├── anantadigital_core.cpp
+│   ├── quantum_feedback_system.cpp
+│   ├── consciousness_hybrid.cpp
+│   └── consciousness_integration.cpp
+├── examples/               # Демо приложения
+│   ├── anantadigital_demo.cpp
+│   └── quantum_acoustic_demo.cpp
+├── tests/                  # Тесты
+│   ├── test_anantadigital_core.cpp
+│   ├── test_quantum_feedback.cpp
+│   └── test_consciousness.cpp
+├── toolchains/             # Файлы инструментария
+│   ├── android-toolchain.cmake
+│   ├── ios-toolchain.cmake
+│   └── avrora-toolchain.cmake
+├── build_*.sh              # Скрипты сборки для Unix-систем
+├── build_windows.bat       # Скрипт сборки для Windows
+├── build_all_platforms.sh  # Универсальный скрипт сборки
+└── CMakeLists.txt          # Основной файл CMake
+```
+
+## Опции сборки
+
+| Опция | Описание | По умолчанию |
+|-------|----------|--------------|
+| `BUILD_SHARED_LIBS` | Сборка разделяемых библиотек | ON |
+| `BUILD_TESTS` | Сборка тестов | ON |
+| `BUILD_EXAMPLES` | Сборка примеров | ON |
+| `ENABLE_QUANTUM_FEEDBACK` | Включить квантовую систему обратной связи | ON |
+| `CMAKE_BUILD_TYPE` | Тип сборки (Debug/Release/RelWithDebInfo/MinSizeRel) | Release |
+
+## Тестирование
+
+```bash
+# Запуск всех тестов
+make test
+
+# Или через CTest
+ctest --output-on-failure
+
+# Запуск конкретного теста
+./anantadigital_tests
+```
+
+## Установка
+
+```bash
+# Установка в системную директорию
+sudo make install
+
+# Установка в пользовательскую директорию
+cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/.local
+make install
+```
+
+## Использование в других проектах
+
+### CMake
+```cmake
+find_package(anAntaDigital REQUIRED)
+target_link_libraries(your_target anantadigital::anantadigital_core)
+```
+
+### pkg-config
+```bash
+pkg-config --cflags --libs anantadigital
+```
+
+## Устранение неполадок
+
+### Ошибки компиляции
+- Убедитесь, что используется C++17 совместимый компилятор
+- Проверьте версию CMake (должна быть 3.16+)
+
+### Android NDK не найден
+```bash
+export ANDROID_NDK_HOME=/path/to/your/android-ndk
+```
+
+### AVR инструменты не найдены
+```bash
+# Ubuntu/Debian
+sudo apt-get install gcc-avr avr-libc
+
+# macOS
+brew install avr-gcc
+```
+
+### iOS сборка не работает
+- Убедитесь, что Xcode установлен и обновлен
+- Проверьте версию iOS SDK
+
+## Лицензия
+
+[Укажите вашу лицензию здесь]
+
+## Поддержка
+
+[Укажите контактную информацию для поддержки]

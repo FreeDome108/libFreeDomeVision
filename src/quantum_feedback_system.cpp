@@ -129,25 +129,7 @@ std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const 
     return feedback_buffer_;
 }
 
-void Feedback::QuantumFeedbackSystem::applyQuantumCorrections() {
-    if (feedback_buffer_.empty()) return;
-    
-    // Apply quantum oscillator corrections
-    quantum_oscillator_.clear();
-    quantum_oscillator_.reserve(feedback_buffer_.size());
-    
-    for (size_t i = 0; i < feedback_buffer_.size(); ++i) {
-        double corrected_sample = feedback_buffer_[i];
-        
-        // Apply quantum oscillator effects
-        double oscillator_phase = 2.0 * M_PI * i / sample_rate_;
-        double oscillator_correction = std::sin(oscillator_phase * coherence_factor_);
-        
-        corrected_sample += oscillator_correction * 0.01 * entanglement_strength_;
-        
-        quantum_oscillator_.push_back(corrected_sample);
-    }
-}
+
 
 std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const {
     return quantum_oscillator_.empty() ? feedback_buffer_ : quantum_oscillator_;

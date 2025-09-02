@@ -8,6 +8,9 @@
 #include <mutex>
 #include <thread>
 #include <chrono>
+#include "quantum_feedback_system.hpp"
+#include "consciousness_hybrid.hpp"
+#include "consciousness_integration.hpp"
 
 namespace AnantaDigital {
 
@@ -152,6 +155,11 @@ namespace AnantaDigital {
         
         // Обновление системы
         void update(double dt);
+        
+        // Внутренние методы
+        void processInterferenceField(const std::vector<double>& input_signal);
+        void processDomeResonance();
+        void generateOutput();
         
         // Обработка аудио сигнала
         void processAudioSignal(const std::vector<double>& input_signal);

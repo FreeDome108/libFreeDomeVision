@@ -11,7 +11,7 @@ AnantaDigitalCore::AnantaDigitalCore(double dome_radius, double dome_height)
     , dome_height_(dome_height)
     , quantum_uncertainty_(0.1)
     , is_initialized_(false)
-    , quantum_feedback_system_(std::make_unique<Feedback::QuantumFeedbackSystem>(44100.0, 0.7))
+    , quantum_feedback_system_(std::make_unique<Feedback::QuantumFeedbackSystem>(std::chrono::microseconds(50000), 0.7))
     , consciousness_hybrid_(std::make_unique<ConsciousnessHybrid>(0.6, 0.8))
     , consciousness_integration_(std::make_unique<ConsciousnessIntegration>(0.7, 0.9))
     , dome_resonator_(std::make_unique<DomeAcousticResonator>(dome_radius, dome_height))
@@ -153,30 +153,7 @@ std::string AnantaDigitalCore::getVersion() const {
     return "2.1.0";
 }
 
-double AnantaDigitalCore::getSampleRate() const {
-    return sample_rate_;
-}
 
-double AnantaDigitalCore::getDomeRadius() const {
-    return dome_radius_;
-}
-
-double AnantaDigitalCore::getDomeHeight() const {
-    return dome_height_;
-}
-
-void AnantaDigitalCore::setSampleRate(double sample_rate) {
-    sample_rate_ = sample_rate;
-    quantum_feedback_system_ = QuantumFeedbackSystem(sample_rate, 0.7);
-}
-
-void AnantaDigitalCore::setDomeDimensions(double radius, double height) {
-    dome_radius_ = radius;
-    dome_height_ = height;
-    interference_field_ = InterferenceField(InterferenceFieldType::CONSTRUCTIVE, 
-                                          {radius/2, M_PI/4, 0, height/2}, radius/4);
-    dome_resonator_ = DomeAcousticResonator(radius, height);
-}
 
 void AnantaDigitalCore::reset() {
     processing_buffer_.clear();

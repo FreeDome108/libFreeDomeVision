@@ -11,12 +11,53 @@ option(BUILD_TESTS "Build tests" ON)
 option(BUILD_EXAMPLES "Build examples" ON)
 option(ENABLE_QUANTUM_FEEDBACK "Enable quantum feedback system" ON)
 
-# Настройка компилятора
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3")
+# Platform detection
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(PLATFORM_LINUX TRUE)
+    message(STATUS "Building for Linux")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    if(CMAKE_OSX_DEPLOYMENT_TARGET)
+        set(PLATFORM_MACOS TRUE)
+        message(STATUS "Building for macOS")
+    else()
+        set(PLATFORM_IOS TRUE)
+        message(STATUS "Building for iOS")
+    endif()
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Android")
+    set(PLATFORM_ANDROID TRUE)
+    message(STATUS "Building for Android")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    set(PLATFORM_WINDOWS TRUE)
+    message(STATUS "Building for Windows")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Avrora")
+    set(PLATFORM_AVRORA TRUE)
+    message(STATUS "Building for Avrora")
+endif()
+
+# Platform-specific compiler flags
+if(PLATFORM_LINUX)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -fPIC")
     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -march=native")
     endif()
+elseif(PLATFORM_MACOS)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -fPIC")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14")
+elseif(PLATFORM_IOS)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -fPIC")
+    set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0")
+elseif(PLATFORM_ANDROID)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -fPIC")
+    set(CMAKE_ANDROID_NDK_TOOLCHAIN_VERSION "clang")
+elseif(PLATFORM_WINDOWS)
+    if(MSVC)
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3 /O2")
+        add_definitions(-D_WIN32_WINNT=0x0601)
+    else()
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3")
+    endif()
+elseif(PLATFORM_AVRORA)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -fPIC")
 endif()
 
 # Поиск зависимостей
@@ -37,6 +78,19 @@ set_target_properties(anantadigital_core PROPERTIES
     PUBLIC_HEADER "src/anantadigital_core.hpp;src/quantum_feedback_system.hpp"
 )
 
+# Platform-specific library properties
+if(PLATFORM_IOS)
+    set_target_properties(anantadigital_core PROPERTIES
+        XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH NO
+        XCODE_ATTRIBUTE_ENABLE_BITCODE NO
+        XCODE_ATTRIBUTE_VALIDATE_PRODUCT YES
+    )
+elseif(PLATFORM_ANDROID)
+    set_target_properties(anantadigital_core PROPERTIES
+        ANDROID_NATIVE_API_LEVEL 21
+    )
+endif()
+
 # Подключение зависимостей
 target_link_libraries(anantadigital_core
     PUBLIC Threads::Threads
@@ -54,6 +108,12 @@ target_compile_definitions(anantadigital_core
     PRIVATE
         ANANTADIGITAL_VERSION="${PROJECT_VERSION}"
         $<$<BOOL:${ENABLE_QUANTUM_FEEDBACK}>:ENABLE_QUANTUM_FEEDBACK>
+        $<$<BOOL:${PLATFORM_LINUX}>:PLATFORM_LINUX>
+        $<$<BOOL:${PLATFORM_MACOS}>:PLATFORM_MACOS>
+        $<$<BOOL:${PLATFORM_IOS}>:PLATFORM_IOS>
+        $<$<BOOL:${PLATFORM_ANDROID}>:PLATFORM_ANDROID>
+        $<$<BOOL:${PLATFORM_WINDOWS}>:PLATFORM_WINDOWS>
+        $<$<BOOL:${PLATFORM_AVRORA}>:PLATFORM_AVRORA>
 )
 
 # Демонстрационные приложения
