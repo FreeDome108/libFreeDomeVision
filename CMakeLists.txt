@@ -129,6 +129,20 @@ if(BUILD_EXAMPLES)
         examples/quantum_acoustic_demo.cpp
     )
     target_link_libraries(quantum_acoustic_demo PRIVATE anantadigital_core)
+    
+    add_executable(audio_playback_demo
+        examples/audio_playback_demo.cpp
+    )
+    target_link_libraries(audio_playback_demo PRIVATE anantadigital_core)
+    
+    # Поиск и подключение аудио библиотек
+    find_package(PkgConfig REQUIRED)
+    pkg_check_modules(PORTAUDIO REQUIRED portaudio-2.0)
+    pkg_check_modules(SNDFILE REQUIRED sndfile)
+    
+    target_include_directories(audio_playback_demo PRIVATE ${PORTAUDIO_INCLUDE_DIRS} ${SNDFILE_INCLUDE_DIRS})
+    target_link_libraries(audio_playback_demo PRIVATE ${PORTAUDIO_LIBRARIES} ${SNDFILE_LIBRARIES})
+    target_compile_options(audio_playback_demo PRIVATE ${PORTAUDIO_CFLAGS_OTHER} ${SNDFILE_CFLAGS_OTHER})
 endif()
 
 # Тесты

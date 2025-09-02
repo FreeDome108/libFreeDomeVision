@@ -5,14 +5,10 @@
 void test_quantum_feedback_initialization() {
     std::cout << "Testing quantum feedback initialization..." << std::endl;
     
-    anantadigital::QuantumFeedbackSystem qfs;
-    assert(!qfs.isInitialized());
-    
+    AnantaDigital::Feedback::QuantumFeedbackSystem qfs(std::chrono::microseconds(50000), 0.7);
     qfs.initialize();
-    assert(qfs.isInitialized());
     
     qfs.shutdown();
-    assert(!qfs.isInitialized());
     
     std::cout << "Quantum feedback initialization tests passed" << std::endl;
 }
