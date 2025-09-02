@@ -69,6 +69,8 @@ add_library(anantadigital_core
     src/quantum_feedback_system.cpp
     src/consciousness_hybrid.cpp
     src/consciousness_integration.cpp
+    src/interference_field.cpp
+    src/dome_acoustic_resonator.cpp
 )
 
 # Настройка свойств библиотеки

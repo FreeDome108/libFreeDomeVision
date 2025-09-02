@@ -11,6 +11,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/anton/proj/libs/libsSound/anAntaDigital/src/anantadigital_core.cpp" "CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.o" "gcc" "CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.o.d"
   "/Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.cpp" "CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o" "gcc" "CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o.d"
   "/Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.cpp" "CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o" "gcc" "CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o.d"
+  "/Users/anton/proj/libs/libsSound/anAntaDigital/src/dome_acoustic_resonator.cpp" "CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o" "gcc" "CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o.d"
+  "/Users/anton/proj/libs/libsSound/anAntaDigital/src/interference_field.cpp" "CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o" "gcc" "CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o.d"
   "/Users/anton/proj/libs/libsSound/anAntaDigital/src/quantum_feedback_system.cpp" "CMakeFiles/anantadigital_core.dir/src/quantum_feedback_system.cpp.o" "gcc" "CMakeFiles/anantadigital_core.dir/src/quantum_feedback_system.cpp.o.d"
   )
 

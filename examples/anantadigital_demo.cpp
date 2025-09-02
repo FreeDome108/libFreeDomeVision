@@ -7,16 +7,16 @@ int main() {
     
     try {
         // Initialize core system
-        anantadigital::Core core;
+        AnantaDigital::AnantaDigitalCore core(10.0, 5.0);
         std::cout << "Core system initialized successfully" << std::endl;
         
         // Initialize quantum feedback system
-        anantadigital::QuantumFeedbackSystem qfs;
+        AnantaDigital::Feedback::QuantumFeedbackSystem qfs(std::chrono::microseconds(50000), 0.7);
         std::cout << "Quantum feedback system initialized" << std::endl;
         
         // Demonstrate basic functionality
-        core.initialize();
-        std::cout << "System status: " << (core.isInitialized() ? "OK" : "ERROR") << std::endl;
+        bool init_result = core.initialize();
+        std::cout << "System status: " << (init_result ? "OK" : "ERROR") << std::endl;
         
         // Cleanup
         core.shutdown();

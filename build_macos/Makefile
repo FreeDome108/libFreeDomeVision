@@ -343,6 +343,54 @@ src/consciousness_integration.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.s
 .PHONY : src/consciousness_integration.cpp.s
 
+src/dome_acoustic_resonator.o: src/dome_acoustic_resonator.cpp.o
+.PHONY : src/dome_acoustic_resonator.o
+
+# target to build an object file
+src/dome_acoustic_resonator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o
+.PHONY : src/dome_acoustic_resonator.cpp.o
+
+src/dome_acoustic_resonator.i: src/dome_acoustic_resonator.cpp.i
+.PHONY : src/dome_acoustic_resonator.i
+
+# target to preprocess a source file
+src/dome_acoustic_resonator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.i
+.PHONY : src/dome_acoustic_resonator.cpp.i
+
+src/dome_acoustic_resonator.s: src/dome_acoustic_resonator.cpp.s
+.PHONY : src/dome_acoustic_resonator.s
+
+# target to generate assembly for a file
+src/dome_acoustic_resonator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.s
+.PHONY : src/dome_acoustic_resonator.cpp.s
+
+src/interference_field.o: src/interference_field.cpp.o
+.PHONY : src/interference_field.o
+
+# target to build an object file
+src/interference_field.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o
+.PHONY : src/interference_field.cpp.o
+
+src/interference_field.i: src/interference_field.cpp.i
+.PHONY : src/interference_field.i
+
+# target to preprocess a source file
+src/interference_field.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.i
+.PHONY : src/interference_field.cpp.i
+
+src/interference_field.s: src/interference_field.cpp.s
+.PHONY : src/interference_field.s
+
+# target to generate assembly for a file
+src/interference_field.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.s
+.PHONY : src/interference_field.cpp.s
+
 src/quantum_feedback_system.o: src/quantum_feedback_system.cpp.o
 .PHONY : src/quantum_feedback_system.o
 
@@ -471,6 +519,12 @@ help:
 	@echo "... src/consciousness_integration.o"
 	@echo "... src/consciousness_integration.i"
 	@echo "... src/consciousness_integration.s"
+	@echo "... src/dome_acoustic_resonator.o"
+	@echo "... src/dome_acoustic_resonator.i"
+	@echo "... src/dome_acoustic_resonator.s"
+	@echo "... src/interference_field.o"
+	@echo "... src/interference_field.i"
+	@echo "... src/interference_field.s"
 	@echo "... src/quantum_feedback_system.o"
 	@echo "... src/quantum_feedback_system.i"
 	@echo "... src/quantum_feedback_system.s"

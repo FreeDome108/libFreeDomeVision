@@ -154,7 +154,7 @@ std::string AnantaDigitalCore::getVersion() const {
 }
 
 bool AnantaDigitalCore::initialize() {
-    if (is_initialized_) return;
+    if (is_initialized_) return true;
     
     // Initialize quantum feedback system
     quantum_feedback_system_->initialize();
@@ -174,6 +174,9 @@ bool AnantaDigitalCore::initialize() {
     
     is_initialized_ = true;
     std::cout << "AnantaDigitalCore initialized successfully" << std::endl;
+    
+    return true;
+    return true;
 }
 
 void AnantaDigitalCore::shutdown() {
