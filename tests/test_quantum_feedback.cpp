@@ -16,12 +16,15 @@ void test_quantum_feedback_initialization() {
 void test_quantum_feedback_processing() {
     std::cout << "Testing quantum feedback processing..." << std::endl;
     
-    anantadigital::QuantumFeedbackSystem qfs;
+    AnantaDigital::Feedback::QuantumFeedbackSystem qfs(std::chrono::microseconds(50000), 0.7);
     qfs.initialize();
     
     // Test basic processing
-    bool result = qfs.processQuantumSignal(1.0);
-    assert(result);
+    std::vector<double> test_signal = {1.0, 0.5, 0.8, 0.3};
+    qfs.processQuantumFeedback(test_signal);
+    
+    auto processed_signal = qfs.getProcessedSignal();
+    assert(!processed_signal.empty());
     
     qfs.shutdown();
     std::cout << "Quantum feedback processing tests passed" << std::endl;

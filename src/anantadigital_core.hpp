@@ -125,8 +125,8 @@ namespace AnantaDigital {
         
         // Системы обработки
         std::unique_ptr<Feedback::QuantumFeedbackSystem> quantum_feedback_system_;
-        std::unique_ptr<ConsciousnessHybrid> consciousness_hybrid_;
-        std::unique_ptr<ConsciousnessIntegration> consciousness_integration_;
+        std::unique_ptr<Consciousness::ConsciousnessHybrid> consciousness_hybrid_;
+        std::unique_ptr<Integration::ConsciousnessIntegration> consciousness_integration_;
         
         // Буферы обработки
         std::vector<double> processing_buffer_;

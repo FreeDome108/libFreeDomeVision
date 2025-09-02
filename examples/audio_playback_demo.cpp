@@ -3,15 +3,15 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <filesystem>
 #include <chrono>
 #include <thread>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <iomanip>
 
 // Для работы с аудио файлами
 #include <sndfile.h>
 #include <portaudio.h>
-
-namespace fs = std::filesystem;
 
 class AudioPlayer {
 private:
@@ -71,10 +71,10 @@ public:
             return;
         }
         
-        // Открытие потока
+        // Открытие потока с большим буфером
         PaStream* stream;
         err = Pa_OpenDefaultStream(&stream, 0, channels_, paFloat32, sample_rate_, 
-                                  256, nullptr, nullptr);
+                                  1024, nullptr, nullptr);
         if (err != paNoError) {
             std::cerr << "PortAudio stream open error: " << Pa_GetErrorText(err) << std::endl;
             Pa_Terminate();
@@ -92,7 +92,9 @@ public:
         
         // Воспроизведение
         size_t frame_index = 0;
-        const size_t frames_per_buffer = 256;
+        const size_t frames_per_buffer = 1024;
+        
+        std::cout << "Starting playback... Duration: " << (audio_buffer_.size() / channels_ / sample_rate_) << " seconds" << std::endl;
         
         while (frame_index < audio_buffer_.size() / channels_) {
             size_t frames_to_write = std::min(frames_per_buffer, 
@@ -105,18 +107,33 @@ public:
             
             err = Pa_WriteStream(stream, buffer.data(), frames_to_write);
             if (err != paNoError) {
-                std::cerr << "PortAudio write error: " << Pa_GetErrorText(err) << std::endl;
-                break;
+                if (err == paOutputUnderflowed) {
+                    // Это нормально, просто ждем
+                    std::this_thread::sleep_for(std::chrono::milliseconds(5));
+                    continue;
+                } else {
+                    std::cerr << "PortAudio write error: " << Pa_GetErrorText(err) << std::endl;
+                    break;
+                }
             }
             
             frame_index += frames_to_write;
             
-            // Небольшая задержка для синхронизации
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
+            // Показываем прогресс каждые 5 секунд
+            if (frame_index % (sample_rate_ * 5) < frames_per_buffer) {
+                double progress = (double)frame_index / (audio_buffer_.size() / channels_) * 100.0;
+                std::cout << "Progress: " << std::fixed << std::setprecision(1) << progress << "%" << std::endl;
+            }
+            
+            // Правильная задержка для синхронизации с реальным временем
+            std::this_thread::sleep_for(std::chrono::microseconds(1000000 * frames_to_write / sample_rate_));
         }
         
-        // Ожидание завершения воспроизведения
-        err = Pa_WriteStream(stream, nullptr, 0);
+        // Ждем завершения воспроизведения всех данных
+        std::cout << "Waiting for playback to finish..." << std::endl;
+        while (Pa_GetStreamWriteAvailable(stream) < 1024) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        }
         
         // Очистка
         Pa_StopStream(stream);
@@ -153,7 +170,8 @@ int main() {
         // Путь к папке с сэмплами
         std::string samples_dir = "../samples";
         
-        if (!fs::exists(samples_dir)) {
+        DIR* dir = opendir(samples_dir.c_str());
+        if (!dir) {
             std::cerr << "Samples directory not found: " << samples_dir << std::endl;
             return 1;
         }
@@ -161,15 +179,22 @@ int main() {
         std::cout << "\nAvailable audio files:" << std::endl;
         std::vector<std::string> audio_files;
         
-        for (const auto& entry : fs::directory_iterator(samples_dir)) {
-            if (entry.is_regular_file()) {
-                std::string ext = entry.path().extension().string();
-                if (ext == ".wav" || ext == ".mp3") {
-                    audio_files.push_back(entry.path().string());
-                    std::cout << "  " << entry.path().filename().string() << std::endl;
+        struct dirent* entry;
+        while ((entry = readdir(dir)) != nullptr) {
+            std::string filename = entry->d_name;
+            if (filename == "." || filename == "..") continue;
+            
+            std::string full_path = samples_dir + "/" + filename;
+            struct stat st;
+            if (stat(full_path.c_str(), &st) == 0 && S_ISREG(st.st_mode)) {
+                std::string ext = filename.substr(filename.find_last_of(".") + 1);
+                if (ext == "wav" || ext == "mp3") {
+                    audio_files.push_back(full_path);
+                    std::cout << "  " << filename << std::endl;
                 }
             }
         }
+        closedir(dir);
         
         if (audio_files.empty()) {
             std::cout << "No audio files found in samples directory" << std::endl;
@@ -179,7 +204,8 @@ int main() {
         // Проигрываем каждый файл
         for (const auto& audio_file : audio_files) {
             std::cout << "\n" << std::string(50, '=') << std::endl;
-            std::cout << "Playing: " << fs::path(audio_file).filename().string() << std::endl;
+            std::string filename = audio_file.substr(audio_file.find_last_of("/") + 1);
+            std::cout << "Playing: " << filename << std::endl;
             std::cout << std::string(50, '=') << std::endl;
             
             if (player.loadAudioFile(audio_file)) {
@@ -190,9 +216,9 @@ int main() {
                 // Пока просто проигрываем
                 player.playAudio();
                 
-                std::cout << "File completed: " << fs::path(audio_file).filename().string() << std::endl;
+                std::cout << "File completed: " << filename << std::endl;
             } else {
-                std::cout << "Failed to load: " << fs::path(audio_file).filename().string() << std::endl;
+                std::cout << "Failed to load: " << filename << std::endl;
             }
             
             // Пауза между файлами

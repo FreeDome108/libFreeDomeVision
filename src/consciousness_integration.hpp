@@ -1,51 +1,38 @@
 #pragma once
 
+#include "consciousness_hybrid.hpp"
 #include <vector>
 #include <memory>
-#include <string>
 
-namespace AnantaDigital {
+namespace AnantaDigital::Integration {
 
+// Система интеграции сознания
 class ConsciousnessIntegration {
-public:
-    ConsciousnessIntegration(double karmic_weight, double mercy_capacity);
-    ~ConsciousnessIntegration() = default;
-
-    void initialize();
-    void shutdown();
-    bool isInitialized() const;
-
-    void processConsciousness(const std::vector<double>& input_signal);
-    std::vector<double> getIntegratedOutput() const;
-    
-    double getKarmicWeight() const;
-    double getMercyCapacity() const;
-    void setKarmicWeight(double weight);
-    void setMercyCapacity(double capacity);
-
 private:
-    double karmic_weight_;
-    double mercy_capacity_;
-    bool initialized_;
-    std::vector<double> integrated_buffer_;
+    std::vector<std::unique_ptr<Consciousness::ConsciousnessHybrid>> consciousness_systems_;
+    std::mutex integration_mutex_;
+    bool is_integrated_;
+
+public:
+    ConsciousnessIntegration();
     
-    // Дополнительные буферы
-    std::vector<double> integration_buffer_;
-    std::vector<double> coherence_buffer_;
-    std::vector<double> integrated_signal_;
+    // Инициализация интеграции
+    bool initialize();
     
-    // Состояние интеграции
-    double integration_level_;
-    double coherence_factor_;
+    // Добавление системы сознания
+    void addConsciousnessSystem(std::unique_ptr<Consciousness::ConsciousnessHybrid> system);
     
-    void balanceConsciousness();
-    void applyMercyPrinciple();
+    // Синхронизация всех систем
+    void synchronizeSystems();
     
-    // Внутренние методы
-    double calculateIntegrationLevel(const std::vector<double>& signal1, const std::vector<double>& signal2);
-    double calculateCoherenceFactor(const std::vector<double>& signal1, const std::vector<double>& signal2);
-    void processIntegration(const std::vector<double>& quantum_signal, const std::vector<double>& hybrid_signal);
-    void applyCoherenceIntegration();
+    // Создание коллективного сознания
+    void createCollectiveConsciousness();
+    
+    // Получение статуса интеграции
+    bool isIntegrated() const;
+    
+    // Очистка ресурсов
+    void cleanup();
 };
 
-} // namespace AnantaDigital
+} // namespace AnantaDigital::Integration

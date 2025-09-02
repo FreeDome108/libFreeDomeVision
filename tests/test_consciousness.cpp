@@ -5,14 +5,14 @@
 void test_consciousness_hybrid() {
     std::cout << "Testing consciousness hybrid system..." << std::endl;
     
-    anantadigital::ConsciousnessHybrid ch;
-    assert(!ch.isActive());
+    AnantaDigital::ConsciousnessHybrid ch(0.6, 0.8);
     
-    ch.activate();
-    assert(ch.isActive());
+    // Test consciousness processing
+    std::vector<double> test_signal = {0.5, 0.7, 0.3, 0.9};
+    ch.processConsciousness(test_signal);
     
-    ch.deactivate();
-    assert(!ch.isActive());
+    auto processed_signal = ch.getProcessedSignal();
+    assert(!processed_signal.empty());
     
     std::cout << "Consciousness hybrid tests passed" << std::endl;
 }

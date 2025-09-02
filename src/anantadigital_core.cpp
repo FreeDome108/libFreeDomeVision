@@ -1,157 +1,151 @@
 #include "anantadigital_core.hpp"
-#include <iostream>
 #include <cmath>
 #include <algorithm>
-#include <chrono>
+#include <stdexcept>
+#include <iostream>
 
 namespace AnantaDigital {
 
-AnantaDigitalCore::AnantaDigitalCore(double dome_radius, double dome_height)
-    : dome_radius_(dome_radius)
-    , dome_height_(dome_height)
-    , quantum_uncertainty_(0.1)
-    , is_initialized_(false)
-    , quantum_feedback_system_(std::make_unique<Feedback::QuantumFeedbackSystem>(std::chrono::microseconds(50000), 0.7))
-    , consciousness_hybrid_(std::make_unique<ConsciousnessHybrid>(0.6, 0.8))
-    , consciousness_integration_(std::make_unique<ConsciousnessIntegration>(0.7, 0.9))
-    , dome_resonator_(std::make_unique<DomeAcousticResonator>(dome_radius, dome_height))
-{
-    processing_buffer_.reserve(2048);
-    output_buffer_.reserve(2048);
-    
-    // Initialize dome resonator with default material properties
-    std::map<double, double> material_properties = {
-        {20.0, 0.1},    // 20 Hz - low frequency absorption
-        {200.0, 0.3},   // 200 Hz - mid frequency absorption
-        {2000.0, 0.5},  // 2 kHz - high frequency absorption
-        {20000.0, 0.7}  // 20 kHz - very high frequency absorption
-    };
-    dome_resonator_->setMaterialProperties(material_properties);
+// InterferenceField implementation
+InterferenceField::InterferenceField(InterferenceFieldType type, SphericalCoord center, double radius)
+    : type_(type), center_position_(center), field_radius_(radius) {
 }
 
-AnantaDigitalCore::~AnantaDigitalCore() = default;
-
-void AnantaDigitalCore::processAudioSignal(const std::vector<double>& input_signal) {
-    if (input_signal.empty()) return;
-    
-    auto start_time = std::chrono::high_resolution_clock::now();
-    
-    // Clear processing buffers
-    processing_buffer_.clear();
-    output_buffer_.clear();
-    
-    // Step 1: Quantum feedback processing
-    quantum_feedback_system_->processQuantumFeedback(input_signal);
-    auto quantum_signal = quantum_feedback_system_->getProcessedSignal();
-    
-    // Step 2: Consciousness hybrid processing
-    consciousness_hybrid_->processConsciousness(input_signal);
-    auto hybrid_signal = consciousness_hybrid_->getProcessedSignal();
-    
-    // Step 3: Consciousness integration
-    consciousness_integration_->processConsciousness(quantum_signal);
-    auto integrated_signal = consciousness_integration_->getIntegratedOutput();
-    
-    // Step 4: Interference field processing
-    processInterferenceField(integrated_signal);
-    
-    // Step 5: Dome resonance processing
-    processDomeResonance();
-    
-    // Step 6: Final output generation
-    generateOutput();
-    
-    auto end_time = std::chrono::high_resolution_clock::now();
-    auto processing_time = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time);
-    
-    std::cout << "Audio processing completed in " << processing_time.count() << " microseconds" << std::endl;
+void InterferenceField::addSourceField(const QuantumSoundField& field) {
+    std::lock_guard<std::mutex> lock(field_mutex_);
+    source_fields_.push_back(field);
 }
 
-void AnantaDigitalCore::processInterferenceField(const std::vector<double>& input_signal) {
-    if (input_signal.empty()) return;
+std::complex<double> InterferenceField::calculateInterference(const SphericalCoord& position, double time) const {
+    std::lock_guard<std::mutex> lock(field_mutex_);
     
-    // Create quantum sound fields for interference processing
-    std::vector<QuantumSoundField> fields;
-    fields.reserve(input_signal.size());
-    
-    for (size_t i = 0; i < input_signal.size(); ++i) {
-        QuantumSoundField field;
-        field.amplitude = std::complex<double>(input_signal[i], 0.0);
-        field.phase = 2.0 * M_PI * i / 44100.0;
-        field.frequency = 20.0 + (20000.0 - 20.0) * i / input_signal.size();
-        field.quantum_state = QuantumSoundState::COHERENT;
-        field.position = {dome_radius_ * 0.5, M_PI/4, 2.0 * M_PI * i / input_signal.size(), dome_height_ * 0.5};
-        field.timestamp = std::chrono::high_resolution_clock::now();
-        
-        fields.push_back(field);
+    if (source_fields_.empty()) {
+        return std::complex<double>(0.0, 0.0);
     }
     
-    // Add fields to interference system
+    std::complex<double> total_field(0.0, 0.0);
+    
+    for (const auto& source : source_fields_) {
+        // Calculate distance from source to position
+        double dx = position.r * sin(position.theta) * cos(position.phi) - 
+                   source.position.r * sin(source.position.theta) * cos(source.position.phi);
+        double dy = position.r * sin(position.theta) * sin(position.phi) - 
+                   source.position.r * sin(source.position.theta) * sin(source.position.phi);
+        double dz = position.r * cos(position.theta) - 
+                   source.position.r * cos(source.position.theta);
+        
+        double distance = std::sqrt(dx*dx + dy*dy + dz*dz);
+        
+        // Calculate phase delay
+        double phase_delay = 2.0 * M_PI * source.frequency * distance / 343.0; // 343 m/s speed of sound
+        
+        // Add contribution from this source
+        total_field += source.amplitude * std::exp(std::complex<double>(0.0, -phase_delay));
+    }
+    
+    return total_field;
+}
+
+QuantumSoundField InterferenceField::quantumSuperposition(const std::vector<QuantumSoundField>& fields) const {
+    if (fields.empty()) {
+        throw std::runtime_error("Cannot create superposition of empty field set");
+    }
+    
+    QuantumSoundField result = fields[0];
+    result.quantum_state = QuantumSoundState::SUPERPOSITION;
+    
+    // Simple superposition - average of all fields
+    std::complex<double> avg_amplitude(0.0, 0.0);
+    double avg_frequency = 0.0;
+    
     for (const auto& field : fields) {
-        // Create interference field if needed
-        if (interference_fields_.empty()) {
-            interference_fields_.push_back(std::make_unique<InterferenceField>(
-                InterferenceFieldType::CONSTRUCTIVE, 
-                SphericalCoord{dome_radius_ * 0.5, M_PI/4, 0, dome_height_ * 0.5}, 
-                dome_radius_ * 0.25
-            ));
-        }
-        interference_fields_[0]->addSourceField(field);
+        avg_amplitude += field.amplitude;
+        avg_frequency += field.frequency;
     }
     
-    // Process interference
-    if (!interference_fields_.empty()) {
-        interference_fields_[0]->updateQuantumState(1.0 / 44100.0);
-    }
+    result.amplitude = avg_amplitude / static_cast<double>(fields.size());
+    result.frequency = avg_frequency / static_cast<double>(fields.size());
+    
+    return result;
 }
 
-void AnantaDigitalCore::processDomeResonance() {
-    // Calculate eigen frequencies for the dome
-    auto eigen_frequencies = dome_resonator_->calculateEigenFrequencies();
+void InterferenceField::updateQuantumState(double dt) {
+    std::lock_guard<std::mutex> lock(field_mutex_);
     
-    // Process resonance effects
-    for (double freq : eigen_frequencies) {
-        double reverb_time = dome_resonator_->calculateReverbTime(freq);
-        
-        // Apply resonance enhancement based on reverb time
-        if (reverb_time > 0.5) {
-            // Strong resonance - enhance signal
-            for (auto& sample : processing_buffer_) {
-                sample *= (1.0 + 0.1 * std::exp(-freq / 1000.0));
+    for (auto& field : source_fields_) {
+        // Simulate quantum decoherence
+        if (field.quantum_state == QuantumSoundState::COHERENT) {
+            // Random chance of state change
+            if (static_cast<double>(rand()) / RAND_MAX < 0.01 * dt) {
+                field.quantum_state = QuantumSoundState::SUPERPOSITION;
             }
         }
     }
 }
 
-void AnantaDigitalCore::generateOutput() {
-    if (processing_buffer_.empty()) return;
+void InterferenceField::createQuantumEntanglement(size_t field1_idx, size_t field2_idx) {
+    std::lock_guard<std::mutex> lock(field_mutex_);
     
-    output_buffer_.clear();
-    output_buffer_.reserve(processing_buffer_.size());
-    
-    // Apply final processing and normalization
-    double max_amplitude = 0.0;
-    for (double sample : processing_buffer_) {
-        max_amplitude = std::max(max_amplitude, std::abs(sample));
+    if (field1_idx >= source_fields_.size() || field2_idx >= source_fields_.size()) {
+        throw std::out_of_range("Field index out of range");
     }
     
-    if (max_amplitude > 0.0) {
-        double normalization_factor = 0.95 / max_amplitude;
-        for (double sample : processing_buffer_) {
-            output_buffer_.push_back(sample * normalization_factor);
+    source_fields_[field1_idx].quantum_state = QuantumSoundState::ENTANGLED;
+    source_fields_[field2_idx].quantum_state = QuantumSoundState::ENTANGLED;
+}
+
+// DomeAcousticResonator implementation
+DomeAcousticResonator::DomeAcousticResonator(double radius, double height)
+    : dome_radius_(radius), dome_height_(height) {
+    
+    // Initialize with some basic resonant frequencies
+    resonant_frequencies_ = {50.0, 100.0, 200.0, 400.0, 800.0, 1600.0};
+    
+    // Initialize acoustic properties
+    acoustic_properties_[50.0] = 0.8;
+    acoustic_properties_[100.0] = 0.9;
+    acoustic_properties_[200.0] = 0.95;
+    acoustic_properties_[400.0] = 0.9;
+    acoustic_properties_[800.0] = 0.85;
+    acoustic_properties_[1600.0] = 0.7;
+}
+
+std::vector<double> DomeAcousticResonator::calculateEigenFrequencies() const {
+    std::vector<double> eigen_freqs;
+    
+    // Calculate eigenfrequencies based on dome geometry
+    // Using simplified spherical harmonics model
+    for (int n = 1; n <= 6; ++n) {
+        for (int m = 0; m <= n; ++m) {
+            double freq = 343.0 * std::sqrt(n * (n + 1)) / (2.0 * M_PI * dome_radius_);
+            eigen_freqs.push_back(freq);
         }
-    } else {
-        output_buffer_ = processing_buffer_;
     }
+    
+    // Sort and remove duplicates
+    std::sort(eigen_freqs.begin(), eigen_freqs.end());
+    eigen_freqs.erase(std::unique(eigen_freqs.begin(), eigen_freqs.end()), eigen_freqs.end());
+    
+    return eigen_freqs;
 }
 
-std::vector<double> AnantaDigitalCore::getProcessedSignal() const {
-    return output_buffer_;
+
+
+
+
+// AnantaDigitalCore implementation
+AnantaDigitalCore::AnantaDigitalCore(double radius, double height)
+    : dome_radius_(radius)
+    , dome_height_(height)
+    , quantum_uncertainty_(0.1)
+    , is_initialized_(false)
+    , quantum_feedback_system_(std::make_unique<Feedback::QuantumFeedbackSystem>(std::chrono::microseconds(50000), 0.7))
+    , consciousness_hybrid_(nullptr)
+    , consciousness_integration_(nullptr)
+    , dome_resonator_(std::make_unique<DomeAcousticResonator>(radius, height)) {
 }
 
-std::string AnantaDigitalCore::getVersion() const {
-    return "2.1.0";
-}
+AnantaDigitalCore::~AnantaDigitalCore() = default;
 
 bool AnantaDigitalCore::initialize() {
     if (is_initialized_) return true;
@@ -159,9 +153,9 @@ bool AnantaDigitalCore::initialize() {
     // Initialize quantum feedback system
     quantum_feedback_system_->initialize();
     
-    // Initialize consciousness systems
-    consciousness_hybrid_->initialize();
-    consciousness_integration_->initialize();
+    // Initialize consciousness systems (simplified)
+    // consciousness_hybrid_->initialize();
+    // consciousness_integration_->initialize();
     
     // Initialize dome resonator
     std::map<double, double> material_properties = {
@@ -176,7 +170,6 @@ bool AnantaDigitalCore::initialize() {
     std::cout << "AnantaDigitalCore initialized successfully" << std::endl;
     
     return true;
-    return true;
 }
 
 void AnantaDigitalCore::shutdown() {
@@ -185,9 +178,9 @@ void AnantaDigitalCore::shutdown() {
     // Shutdown quantum feedback system
     quantum_feedback_system_->shutdown();
     
-    // Shutdown consciousness systems
-    consciousness_hybrid_->shutdown();
-    consciousness_integration_->shutdown();
+    // Shutdown consciousness systems (simplified)
+    // consciousness_hybrid_->shutdown();
+    // consciousness_integration_->shutdown();
     
     is_initialized_ = false;
     std::cout << "AnantaDigitalCore shutdown completed" << std::endl;
@@ -197,8 +190,12 @@ bool AnantaDigitalCore::isInitialized() const {
     return is_initialized_;
 }
 
+std::vector<double> AnantaDigitalCore::getProcessedSignal() const {
+    return output_buffer_;
+}
 
-
-
+std::string AnantaDigitalCore::getVersion() const {
+    return "2.1.0";
+}
 
 } // namespace AnantaDigital
