@@ -7,7 +7,7 @@ int main() {
     std::cout << "=== Quantum Acoustic Demo ===" << std::endl;
     
     try {
-        anantadigital::QuantumFeedbackSystem qfs;
+        AnantaDigital::Feedback::QuantumFeedbackSystem qfs(std::chrono::microseconds(50000), 0.7);
         std::cout << "Quantum feedback system initialized" << std::endl;
         
         // Simulate quantum acoustic processing

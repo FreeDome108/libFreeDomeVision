@@ -5,10 +5,11 @@
 void test_core_initialization() {
     std::cout << "Testing core initialization..." << std::endl;
     
-    anantadigital::Core core;
+    AnantaDigital::AnantaDigitalCore core(10.0, 5.0);
     assert(!core.isInitialized());
     
-    core.initialize();
+    bool init_result = core.initialize();
+    assert(init_result);
     assert(core.isInitialized());
     
     core.shutdown();
@@ -20,7 +21,7 @@ void test_core_initialization() {
 void test_core_version() {
     std::cout << "Testing core version..." << std::endl;
     
-    anantadigital::Core core;
+    AnantaDigital::AnantaDigitalCore core(10.0, 5.0);
     std::string version = core.getVersion();
     assert(!version.empty());
     
