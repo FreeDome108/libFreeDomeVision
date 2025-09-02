@@ -139,6 +139,7 @@ namespace AnantaDigital {
         // Инициализация системы
         bool initialize();
         void shutdown();
+        bool isInitialized() const;
         
         // Управление интерференционными полями
         void addInterferenceField(std::unique_ptr<InterferenceField> field);

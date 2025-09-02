@@ -40,6 +40,10 @@ public:
     
     // Get hybrid factor
     double getHybridFactor() const;
+    
+    // Initialize and shutdown
+    void initialize();
+    void shutdown();
 
 private:
     double consciousness_threshold_;

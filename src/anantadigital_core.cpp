@@ -153,7 +153,7 @@ std::string AnantaDigitalCore::getVersion() const {
     return "2.1.0";
 }
 
-void AnantaDigitalCore::initialize() {
+bool AnantaDigitalCore::initialize() {
     if (is_initialized_) return;
     
     // Initialize quantum feedback system

@@ -174,6 +174,18 @@ void ConsciousnessHybrid::setHybridFactor(double factor) {
     hybrid_factor_ = std::clamp(factor, 0.0, 1.0);
 }
 
+void ConsciousnessHybrid::initialize() {
+    // Initialize consciousness hybrid system
+    consciousness_level_ = 0.0;
+    hybrid_state_ = HybridState::UNCONSCIOUS;
+}
+
+void ConsciousnessHybrid::shutdown() {
+    // Shutdown consciousness hybrid system
+    consciousness_level_ = 0.0;
+    hybrid_state_ = HybridState::UNCONSCIOUS;
+}
+
 void ConsciousnessHybrid::reset() {
     consciousness_level_ = 0.0;
     hybrid_state_ = HybridState::UNCONSCIOUS;

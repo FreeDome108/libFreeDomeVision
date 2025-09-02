@@ -151,4 +151,12 @@ void ConsciousnessIntegration::setMercyCapacity(double capacity) {
     mercy_capacity_ = std::clamp(capacity, 0.0, 1.0);
 }
 
+void ConsciousnessIntegration::initialize() {
+    initialized_ = true;
+}
+
+void ConsciousnessIntegration::shutdown() {
+    initialized_ = false;
+}
+
 } // namespace AnantaDigital
