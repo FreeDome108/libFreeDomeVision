@@ -1,5 +1,34 @@
 @PACKAGE_INIT@
 
+include(CMakeFindDependencyMacro)
+
+# Find dependencies
+find_dependency(Threads)
+
+# Include the targets file
 include("${CMAKE_CURRENT_LIST_DIR}/anantadigitalTargets.cmake")
 
-check_required_components(anantadigital_core)
+# Set variables
+set(anantadigital_VERSION "@PROJECT_VERSION@")
+set(anantadigital_VERSION_MAJOR "@PROJECT_VERSION_MAJOR@")
+set(anantadigital_VERSION_MINOR "@PROJECT_VERSION_MINOR@")
+set(anantadigital_VERSION_PATCH "@PROJECT_VERSION_PATCH@")
+
+# Platform-specific variables
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    set(anantadigital_PLATFORM "Linux")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+    if(CMAKE_OSX_DEPLOYMENT_TARGET)
+        set(anantadigital_PLATFORM "macOS")
+    else()
+        set(anantadigital_PLATFORM "iOS")
+    endif()
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Android")
+    set(anantadigital_PLATFORM "Android")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    set(anantadigital_PLATFORM "Windows")
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Avrora")
+    set(anantadigital_PLATFORM "Avrora")
+endif()
+
+check_required_components(anantadigital)

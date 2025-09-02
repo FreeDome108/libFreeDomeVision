@@ -43,6 +43,8 @@ if(PLATFORM_LINUX)
 elseif(PLATFORM_MACOS)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -fPIC")
     set(CMAKE_OSX_DEPLOYMENT_TARGET "10.14")
+    # Отключаем std::filesystem для macOS 10.14
+    add_definitions(-D_LIBCPP_DISABLE_AVAILABILITY)
 elseif(PLATFORM_IOS)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O3 -fPIC")
     set(CMAKE_OSX_DEPLOYMENT_TARGET "11.0")
@@ -67,8 +69,6 @@ find_package(Threads REQUIRED)
 add_library(anantadigital_core
     src/anantadigital_core.cpp
     src/quantum_feedback_system.cpp
-    src/consciousness_hybrid.cpp
-    src/consciousness_integration.cpp
     src/interference_field.cpp
     src/dome_acoustic_resonator.cpp
 )
@@ -143,6 +143,18 @@ if(BUILD_EXAMPLES)
     target_include_directories(audio_playback_demo PRIVATE ${PORTAUDIO_INCLUDE_DIRS} ${SNDFILE_INCLUDE_DIRS})
     target_link_libraries(audio_playback_demo PRIVATE ${PORTAUDIO_LIBRARIES} ${SNDFILE_LIBRARIES})
     target_compile_options(audio_playback_demo PRIVATE ${PORTAUDIO_CFLAGS_OTHER} ${SNDFILE_CFLAGS_OTHER})
+    
+    # Дополнительные пути для macOS
+    if(PLATFORM_MACOS)
+        target_include_directories(audio_playback_demo PRIVATE 
+            /opt/homebrew/include
+            /usr/local/include
+        )
+        target_link_directories(audio_playback_demo PRIVATE 
+            /opt/homebrew/lib
+            /usr/local/lib
+        )
+    endif()
 endif()
 
 # Тесты

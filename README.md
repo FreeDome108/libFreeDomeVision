@@ -1,71 +1,74 @@
 # anAntaDigital
 
-Библиотека для квантовой акустической обработки и сознательной интеграции.
+Квантовая акустическая система сознания для купольных пространств.
 
-## Поддерживаемые платформы
+## Описание
 
-- **Linux** - Ubuntu, Debian, CentOS, RHEL
-- **macOS** - 10.14+ (Mojave и новее)
-- **iOS** - 11.0+ (iPhone, iPad)
-- **Android** - API 21+ (Android 5.0+)
-- **Avrora** - AVR микроконтроллеры (ATmega328p)
-- **Windows** - Windows 10/11, Visual Studio 2019+
+anAntaDigital - это библиотека для создания квантовых интерференционных полей в купольных акустических пространствах. Система интегрирует квантовую механику, акустику и сознание для создания уникальных звуковых переживаний.
+
+## Возможности
+
+- **Квантовые интерференционные поля** - создание сложных звуковых паттернов
+- **Купольные акустические резонаторы** - оптимизация акустики для купольных пространств
+- **Гибридная система сознания** - интеграция квантовых состояний сознания
+- **Кросс-платформенность** - поддержка Linux, macOS, iOS, Android, Avrora, Windows
 
 ## Требования
 
 ### Общие требования
-- CMake 3.16+
+- CMake 3.16 или выше
 - C++17 совместимый компилятор
-- Threads библиотека
+- pthread (для Linux/macOS)
 
 ### Платформо-специфичные требования
 
 #### Linux
-- GCC 7+ или Clang 6+
-- make, pkg-config
+- GCC 7+ или Clang 5+
+- libportaudio-dev
+- libsndfile1-dev
 
 #### macOS
 - Xcode Command Line Tools
-- Clang (входит в Xcode)
+- Homebrew (для зависимостей)
+- portaudio
+- sndfile
 
 #### iOS
 - Xcode 12+
 - iOS SDK 11.0+
 
 #### Android
-- Android NDK 25.2+
-- CMake 3.16+
-- Переменная окружения `ANDROID_NDK_HOME`
+- Android NDK r21+
+- CMake 3.18+
 
 #### Avrora
-- avr-gcc
-- avr-g++
+- AVR-GCC
+- AVR-LIBC
 
 #### Windows
 - Visual Studio 2019+ или MinGW-w64
 - CMake 3.16+
 
-## Быстрая сборка
+## Сборка
 
-### Сборка для всех платформ
+### Быстрая сборка
 
 ```bash
-# Сделать скрипт исполняемым
-chmod +x build_all_platforms.sh
+# Сборка для текущей платформы
+./build_all.sh
 
-# Собрать для всех платформ
-./build_all_platforms.sh
+# Сборка для конкретной платформы
+./build_all.sh linux
+./build_all.sh macos
+./build_all.sh ios
+./build_all.sh android
+./build_all.sh avrora
 
-# Или для конкретной платформы
-./build_all_platforms.sh linux
-./build_all_platforms.sh macos
-./build_all_platforms.sh ios
-./build_all_platforms.sh android
-./build_all_platforms.sh avrora
-./build_all_platforms.sh windows
+# Сборка для всех платформ (кроме Windows)
+./build_all.sh all
 ```
 
-### Индивидуальные скрипты сборки
+### Детальная сборка
 
 #### Linux
 ```bash
@@ -87,6 +90,9 @@ chmod +x build_ios.sh
 
 #### Android
 ```bash
+# Установите переменную ANDROID_NDK
+export ANDROID_NDK=/path/to/android-ndk
+
 chmod +x build_android.sh
 ./build_android.sh
 ```
@@ -102,57 +108,28 @@ chmod +x build_avrora.sh
 build_windows.bat
 ```
 
-## Ручная сборка с CMake
+### Ручная сборка с CMake
 
-### Linux/macOS
 ```bash
-mkdir build && cd build
+mkdir build
+cd build
+
+# Конфигурация
 cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DBUILD_SHARED_LIBS=ON \
     -DBUILD_TESTS=ON \
     -DBUILD_EXAMPLES=ON \
     -DENABLE_QUANTUM_FEEDBACK=ON
+
+# Сборка
 make -j$(nproc)
+
+# Тесты
 make test
+
+# Установка
 sudo make install
-```
-
-### iOS
-```bash
-mkdir build_ios && cd build_ios
-cmake .. \
-    -DCMAKE_SYSTEM_NAME=iOS \
-    -DCMAKE_OSX_DEPLOYMENT_TARGET=11.0 \
-    -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" \
-    -DBUILD_SHARED_LIBS=OFF \
-    -DBUILD_TESTS=OFF \
-    -DBUILD_EXAMPLES=OFF
-make -j$(sysctl -n hw.ncpu)
-```
-
-### Android
-```bash
-mkdir build_android && cd build_android
-cmake .. \
-    -DCMAKE_SYSTEM_NAME=Android \
-    -DCMAKE_SYSTEM_VERSION=21 \
-    -DCMAKE_ANDROID_ARCH_ABI=arm64-v8a \
-    -DCMAKE_ANDROID_NDK=$ANDROID_NDK_HOME \
-    -DCMAKE_ANDROID_NDK_TOOLCHAIN_VERSION=clang
-make -j$(nproc)
-```
-
-### Avrora
-```bash
-mkdir build_avrora && cd build_avrora
-cmake .. \
-    -DCMAKE_SYSTEM_NAME=Avrora \
-    -DCMAKE_CXX_COMPILER=avr-g++ \
-    -DCMAKE_C_COMPILER=avr-gcc \
-    -DCMAKE_CXX_FLAGS="-mmcu=atmega328p -Os" \
-    -DBUILD_SHARED_LIBS=OFF
-make -j$(nproc)
 ```
 
 ## Структура проекта
@@ -161,35 +138,73 @@ make -j$(nproc)
 anAntaDigital/
 ├── src/                    # Исходный код
 │   ├── anantadigital_core.cpp
+│   ├── anantadigital_core.hpp
 │   ├── quantum_feedback_system.cpp
+│   ├── quantum_feedback_system.hpp
 │   ├── consciousness_hybrid.cpp
-│   └── consciousness_integration.cpp
-├── examples/               # Демо приложения
-│   ├── anantadigital_demo.cpp
-│   └── quantum_acoustic_demo.cpp
+│   ├── consciousness_hybrid.hpp
+│   ├── consciousness_integration.cpp
+│   ├── consciousness_integration.hpp
+│   ├── interference_field.cpp
+│   ├── interference_field.hpp
+│   ├── dome_acoustic_resonator.cpp
+│   └── dome_acoustic_resonator.hpp
+├── examples/               # Примеры использования
 ├── tests/                  # Тесты
-│   ├── test_anantadigital_core.cpp
-│   ├── test_quantum_feedback.cpp
-│   └── test_consciousness.cpp
-├── toolchains/             # Файлы инструментария
-│   ├── android-toolchain.cmake
-│   ├── ios-toolchain.cmake
-│   └── avrora-toolchain.cmake
-├── build_*.sh              # Скрипты сборки для Unix-систем
-├── build_windows.bat       # Скрипт сборки для Windows
-├── build_all_platforms.sh  # Универсальный скрипт сборки
-└── CMakeLists.txt          # Основной файл CMake
+├── cmake/                  # CMake конфигурация
+├── build_*.sh             # Скрипты сборки для Unix-систем
+├── build_windows.bat      # Скрипт сборки для Windows
+├── build_all.sh           # Универсальный скрипт сборки
+└── CMakeLists.txt         # Основной CMake файл
 ```
 
-## Опции сборки
+## Использование
 
-| Опция | Описание | По умолчанию |
-|-------|----------|--------------|
-| `BUILD_SHARED_LIBS` | Сборка разделяемых библиотек | ON |
-| `BUILD_TESTS` | Сборка тестов | ON |
-| `BUILD_EXAMPLES` | Сборка примеров | ON |
-| `ENABLE_QUANTUM_FEEDBACK` | Включить квантовую систему обратной связи | ON |
-| `CMAKE_BUILD_TYPE` | Тип сборки (Debug/Release/RelWithDebInfo/MinSizeRel) | Release |
+### C++ API
+
+```cpp
+#include <anantadigital/anantadigital_core.hpp>
+
+// Инициализация системы
+AnantaDigital::InterferenceField field(
+    AnantaDigital::InterferenceFieldType::CONSTRUCTIVE,
+    {10.0, M_PI/2, 0.0, 5.0}, // сферические координаты
+    5.0 // радиус поля
+);
+
+// Добавление источника звука
+AnantaDigital::QuantumSoundField source;
+source.amplitude = std::complex<double>(1.0, 0.0);
+source.frequency = 440.0; // 440 Hz
+source.position = {5.0, M_PI/4, M_PI/2, 2.5};
+
+field.addSourceField(source);
+
+// Вычисление интерференции
+auto interference = field.calculateInterference(
+    {8.0, M_PI/3, M_PI/4, 3.0}, // точка наблюдения
+    0.0 // время
+);
+```
+
+### C API
+
+```c
+#include <anantadigital_core.h>
+
+// Инициализация
+anantadigital_initialize();
+
+// Создание интерференционного поля
+void* field = anantadigital_create_interference_field(
+    0, // CONSTRUCTIVE
+    10.0, 1.57, 0.0, 5.0, // r, theta, phi, height
+    5.0 // radius
+);
+
+// Очистка
+anantadigital_shutdown();
+```
 
 ## Тестирование
 
@@ -197,60 +212,29 @@ anAntaDigital/
 # Запуск всех тестов
 make test
 
-# Или через CTest
-ctest --output-on-failure
-
 # Запуск конкретного теста
-./anantadigital_tests
+./tests/anantadigital_tests
+```
+
+## Примеры
+
+```bash
+# Сборка примеров
+make examples
+
+# Запуск демо
+./examples/anantadigital_demo
+./examples/quantum_acoustic_demo
+./examples/audio_playback_demo
 ```
 
 ## Установка
 
-```bash
-# Установка в системную директорию
-sudo make install
+После успешной сборки библиотека устанавливается в системные директории:
 
-# Установка в пользовательскую директорию
-cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/.local
-make install
-```
-
-## Использование в других проектах
-
-### CMake
-```cmake
-find_package(anAntaDigital REQUIRED)
-target_link_libraries(your_target anantadigital::anantadigital_core)
-```
-
-### pkg-config
-```bash
-pkg-config --cflags --libs anantadigital
-```
-
-## Устранение неполадок
-
-### Ошибки компиляции
-- Убедитесь, что используется C++17 совместимый компилятор
-- Проверьте версию CMake (должна быть 3.16+)
-
-### Android NDK не найден
-```bash
-export ANDROID_NDK_HOME=/path/to/your/android-ndk
-```
-
-### AVR инструменты не найдены
-```bash
-# Ubuntu/Debian
-sudo apt-get install gcc-avr avr-libc
-
-# macOS
-brew install avr-gcc
-```
-
-### iOS сборка не работает
-- Убедитесь, что Xcode установлен и обновлен
-- Проверьте версию iOS SDK
+- **Linux/macOS**: `/usr/local/lib` и `/usr/local/include/anantadigital`
+- **Windows**: `install/lib` и `install/include/anantadigital`
+- **iOS/Android**: `build_*/install/*/lib` и `build_*/install/*/include/anantadigital`
 
 ## Лицензия
 
@@ -258,4 +242,14 @@ brew install avr-gcc
 
 ## Поддержка
 
-[Укажите контактную информацию для поддержки]
+Для получения поддержки создайте issue в репозитории или свяжитесь с командой разработки.
+
+## Вклад в проект
+
+Мы приветствуем вклад в развитие проекта! Пожалуйста, создайте pull request или обсудите изменения в issue.
+
+## История версий
+
+- **2.1.0** - Текущая версия с поддержкой всех платформ
+- **2.0.0** - Переход на C++17 и новая архитектура
+- **1.0.0** - Первая стабильная версия

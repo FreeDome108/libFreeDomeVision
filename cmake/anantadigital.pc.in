@@ -1,0 +1,12 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib
+
+Name: anantadigital
+Description: AnantaDigital - Quantum Acoustic Consciousness System
+Version: @PROJECT_VERSION@
+Cflags: -I${includedir}
+Libs: -L${libdir} -lanantadigital_core
+Requires: 
+Libs.private: -lpthread
