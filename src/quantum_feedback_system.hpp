@@ -15,6 +15,14 @@ namespace AnantaDigital::Feedback {
         INCOHERENT
     };
 
+    // Сферические координаты
+    struct SphericalCoord {
+        double r;       // радиус
+        double theta;   // полярный угол (0-π)
+        double phi;     // азимутальный угол (0-2π)
+        double height;  // высота
+    };
+
     // Состояния квантово-временной задержки
     enum class QuantumDelayState {
         SYNCHRONOUS,        // Синхронное состояние (нулевая задержка)

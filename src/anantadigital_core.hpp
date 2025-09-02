@@ -12,6 +12,11 @@
 #include "consciousness_hybrid.hpp"
 #include "consciousness_integration.hpp"
 
+// Forward declarations
+namespace AnantaDigital::Feedback {
+    class QuantumFeedbackSystem;
+}
+
 namespace AnantaDigital {
 
     // Квантовые состояния звуковых частиц

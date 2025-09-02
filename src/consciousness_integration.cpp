@@ -38,6 +38,10 @@ void ConsciousnessIntegration::processConsciousness(const std::vector<double>& i
     applyCoherenceIntegration();
 }
 
+std::vector<double> ConsciousnessIntegration::getIntegratedOutput() const {
+    return integrated_signal_;
+}
+
 void ConsciousnessIntegration::processIntegration(const std::vector<double>& quantum_signal,
                                                const std::vector<double>& hybrid_signal) {
     if (quantum_signal.empty() || hybrid_signal.empty()) return;

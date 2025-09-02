@@ -129,6 +129,15 @@ std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const 
     return feedback_buffer_;
 }
 
+bool Feedback::QuantumFeedbackSystem::initialize() {
+    is_running_ = true;
+    return true;
+}
+
+void Feedback::QuantumFeedbackSystem::shutdown() {
+    is_running_ = false;
+}
+
 
 
 

@@ -153,6 +153,47 @@ std::string AnantaDigitalCore::getVersion() const {
     return "2.1.0";
 }
 
+void AnantaDigitalCore::initialize() {
+    if (is_initialized_) return;
+    
+    // Initialize quantum feedback system
+    quantum_feedback_system_->initialize();
+    
+    // Initialize consciousness systems
+    consciousness_hybrid_->initialize();
+    consciousness_integration_->initialize();
+    
+    // Initialize dome resonator
+    std::map<double, double> material_properties = {
+        {20.0, 0.1},    // 20 Hz - low frequency absorption
+        {200.0, 0.3},   // 200 Hz - bass absorption
+        {2000.0, 0.5},  // 2 kHz - mid frequency absorption
+        {20000.0, 0.7}  // 20 kHz - very high frequency absorption
+    };
+    dome_resonator_->setMaterialProperties(material_properties);
+    
+    is_initialized_ = true;
+    std::cout << "AnantaDigitalCore initialized successfully" << std::endl;
+}
+
+void AnantaDigitalCore::shutdown() {
+    if (!is_initialized_) return;
+    
+    // Shutdown quantum feedback system
+    quantum_feedback_system_->shutdown();
+    
+    // Shutdown consciousness systems
+    consciousness_hybrid_->shutdown();
+    consciousness_integration_->shutdown();
+    
+    is_initialized_ = false;
+    std::cout << "AnantaDigitalCore shutdown completed" << std::endl;
+}
+
+bool AnantaDigitalCore::isInitialized() const {
+    return is_initialized_;
+}
+
 
 
 
