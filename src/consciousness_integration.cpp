@@ -198,4 +198,20 @@ void ConsciousnessIntegration::reset() {
     integrated_signal_.clear();
 }
 
+double ConsciousnessIntegration::getKarmicWeight() const {
+    return karmic_weight_;
+}
+
+double ConsciousnessIntegration::getMercyCapacity() const {
+    return mercy_capacity_;
+}
+
+void ConsciousnessIntegration::setKarmicWeight(double weight) {
+    karmic_weight_ = std::clamp(weight, 0.0, 1.0);
+}
+
+void ConsciousnessIntegration::setMercyCapacity(double capacity) {
+    mercy_capacity_ = std::clamp(capacity, 0.0, 1.0);
+}
+
 } // namespace AnantaDigital

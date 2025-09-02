@@ -34,6 +34,12 @@ public:
 
     // Reset system
     void reset();
+    
+    // Get consciousness threshold
+    double getConsciousnessThreshold() const;
+    
+    // Get hybrid factor
+    double getHybridFactor() const;
 
 private:
     double consciousness_threshold_;

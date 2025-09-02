@@ -5,9 +5,13 @@
 
 namespace AnantaDigital {
 
-QuantumFeedbackSystem::QuantumFeedbackSystem(double sample_rate, double quantum_threshold)
-    : sample_rate_(sample_rate)
-    , quantum_threshold_(quantum_threshold)
+Feedback::QuantumFeedbackSystem::QuantumFeedbackSystem(std::chrono::microseconds nominal_delay, double sensitivity)
+    : nominal_delay_(nominal_delay)
+    , max_correction_window_(std::chrono::microseconds(100000))
+    , feedback_sensitivity_(sensitivity)
+    , quantum_uncertainty_threshold_(0.1)
+    , sample_rate_(44100.0)
+    , quantum_threshold_(0.7)
     , coherence_factor_(1.0)
     , entanglement_strength_(0.0)
     , quantum_state_(QuantumState::COHERENT)
@@ -18,9 +22,9 @@ QuantumFeedbackSystem::QuantumFeedbackSystem(double sample_rate, double quantum_
     quantum_oscillator_.reserve(256);
 }
 
-QuantumFeedbackSystem::~QuantumFeedbackSystem() = default;
+Feedback::QuantumFeedbackSystem::~QuantumFeedbackSystem() = default;
 
-void QuantumFeedbackSystem::processQuantumFeedback(const std::vector<double>& input_signal) {
+void Feedback::QuantumFeedbackSystem::processQuantumFeedback(const std::vector<double>& input_signal) {
     if (input_signal.empty()) return;
     
     // Analyze quantum coherence
@@ -37,7 +41,7 @@ void QuantumFeedbackSystem::processQuantumFeedback(const std::vector<double>& in
     applyQuantumCorrections();
 }
 
-double QuantumFeedbackSystem::calculateCoherence(const std::vector<double>& signal) {
+double Feedback::QuantumFeedbackSystem::calculateCoherence(const std::vector<double>& signal) {
     if (signal.size() < 2) return 1.0;
     
     double sum = 0.0;
@@ -64,7 +68,7 @@ double QuantumFeedbackSystem::calculateCoherence(const std::vector<double>& sign
     return std::clamp(coherence, 0.0, 1.0);
 }
 
-void QuantumFeedbackSystem::updateQuantumState() {
+void Feedback::QuantumFeedbackSystem::updateQuantumState() {
     if (coherence_factor_ > quantum_threshold_) {
         if (quantum_state_ != QuantumState::COHERENT) {
             quantum_state_ = QuantumState::COHERENT;
@@ -83,7 +87,7 @@ void QuantumFeedbackSystem::updateQuantumState() {
     }
 }
 
-void QuantumFeedbackSystem::generateQuantumFeedback(const std::vector<double>& input_signal) {
+void Feedback::QuantumFeedbackSystem::generateQuantumFeedback(const std::vector<double>& input_signal) {
     feedback_buffer_.clear();
     feedback_buffer_.reserve(input_signal.size());
     
@@ -106,7 +110,26 @@ void QuantumFeedbackSystem::generateQuantumFeedback(const std::vector<double>& i
     }
 }
 
-void QuantumFeedbackSystem::applyQuantumCorrections() {
+void Feedback::QuantumFeedbackSystem::applyQuantumCorrections() {
+    if (feedback_buffer_.empty()) return;
+    
+    // Apply quantum corrections based on entanglement strength
+    for (auto& sample : feedback_buffer_) {
+        if (entanglement_strength_ > 0.5) {
+            // Strong entanglement - enhance signal
+            sample *= (1.0 + entanglement_strength_ * 0.2);
+        } else {
+            // Weak entanglement - moderate enhancement
+            sample *= (1.0 + entanglement_strength_ * 0.1);
+        }
+    }
+}
+
+std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const {
+    return feedback_buffer_;
+}
+
+void Feedback::QuantumFeedbackSystem::applyQuantumCorrections() {
     if (feedback_buffer_.empty()) return;
     
     // Apply quantum oscillator corrections
@@ -126,27 +149,27 @@ void QuantumFeedbackSystem::applyQuantumCorrections() {
     }
 }
 
-std::vector<double> QuantumFeedbackSystem::getProcessedSignal() const {
+std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const {
     return quantum_oscillator_.empty() ? feedback_buffer_ : quantum_oscillator_;
 }
 
-double QuantumFeedbackSystem::getCoherenceFactor() const {
+double Feedback::QuantumFeedbackSystem::getCoherenceFactor() const {
     return coherence_factor_;
 }
 
-QuantumFeedbackSystem::QuantumState QuantumFeedbackSystem::getQuantumState() const {
+Feedback::QuantumFeedbackSystem::QuantumState Feedback::QuantumFeedbackSystem::getQuantumState() const {
     return quantum_state_;
 }
 
-void QuantumFeedbackSystem::setQuantumThreshold(double threshold) {
+void Feedback::QuantumFeedbackSystem::setQuantumThreshold(double threshold) {
     quantum_threshold_ = std::clamp(threshold, 0.0, 1.0);
 }
 
-void QuantumFeedbackSystem::setEntanglementStrength(double strength) {
+void Feedback::QuantumFeedbackSystem::setEntanglementStrength(double strength) {
     entanglement_strength_ = std::clamp(strength, 0.0, 1.0);
 }
 
-void QuantumFeedbackSystem::reset() {
+void Feedback::QuantumFeedbackSystem::reset() {
     coherence_factor_ = 1.0;
     entanglement_strength_ = 0.0;
     quantum_state_ = QuantumState::COHERENT;

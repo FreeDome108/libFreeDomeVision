@@ -82,6 +82,14 @@ namespace AnantaDigital::Feedback {
         double feedback_sensitivity_;
         double quantum_uncertainty_threshold_;
         
+        // Квантовые параметры
+        double sample_rate_;
+        double quantum_threshold_;
+        double coherence_factor_;
+        double entanglement_strength_;
+        QuantumState quantum_state_;
+        std::vector<double> quantum_oscillator_;
+        
         // Потоки обработки
         std::thread feedback_thread_;
         std::thread correction_thread_;
@@ -91,9 +99,9 @@ namespace AnantaDigital::Feedback {
         mutable std::mutex correction_mutex_;
 
     public:
-        RealtimeFeedbackSystem(std::chrono::microseconds nominal_delay = std::chrono::microseconds(50000),
+        QuantumFeedbackSystem(std::chrono::microseconds nominal_delay = std::chrono::microseconds(50000),
                               double sensitivity = 0.8);
-        ~RealtimeFeedbackSystem();
+        ~QuantumFeedbackSystem();
         
         // Инициализация системы
         bool initialize();
@@ -107,6 +115,25 @@ namespace AnantaDigital::Feedback {
         
         // Получение скорректированных сигналов
         std::vector<TimestampedSignal> getCorrectedSignals() const;
+        
+        // Получение обработанного сигнала
+        std::vector<double> getProcessedSignal() const;
+        
+        // Обработка квантовой обратной связи
+        void processQuantumFeedback(const std::vector<double>& input_signal);
+        
+        // Внутренние методы
+        double calculateCoherence(const std::vector<double>& signal);
+        void updateQuantumState();
+        void generateQuantumFeedback(const std::vector<double>& input_signal);
+        void applyQuantumCorrections();
+        
+        // Дополнительные методы
+        double getCoherenceFactor() const;
+        QuantumState getQuantumState() const;
+        void setQuantumThreshold(double threshold);
+        void setEntanglementStrength(double strength);
+        void reset();
         
         // Настройка параметров системы
         void setFeedbackSensitivity(double sensitivity);

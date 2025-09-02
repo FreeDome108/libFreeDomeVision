@@ -154,8 +154,16 @@ double ConsciousnessHybrid::getConsciousnessLevel() const {
     return consciousness_level_;
 }
 
-ConsciousnessHybrid::HybridState ConsciousnessHybrid::getHybridState() const {
+HybridState ConsciousnessHybrid::getHybridState() const {
     return hybrid_state_;
+}
+
+double ConsciousnessHybrid::getConsciousnessThreshold() const {
+    return consciousness_threshold_;
+}
+
+double ConsciousnessHybrid::getHybridFactor() const {
+    return hybrid_factor_;
 }
 
 void ConsciousnessHybrid::setConsciousnessThreshold(double threshold) {

@@ -116,7 +116,7 @@ namespace AnantaDigital {
         bool is_initialized_;
         
         // Системы обработки
-        std::unique_ptr<Feedback::RealtimeFeedbackSystem> quantum_feedback_system_;
+        std::unique_ptr<Feedback::QuantumFeedbackSystem> quantum_feedback_system_;
         std::unique_ptr<ConsciousnessHybrid> consciousness_hybrid_;
         std::unique_ptr<ConsciousnessIntegration> consciousness_integration_;
         
@@ -146,6 +146,9 @@ namespace AnantaDigital {
         
         // Получение результирующего звукового поля
         std::vector<QuantumSoundField> getOutputFields() const;
+        
+        // Получение обработанного сигнала
+        std::vector<double> getProcessedSignal() const;
         
         // Обновление системы
         void update(double dt);
