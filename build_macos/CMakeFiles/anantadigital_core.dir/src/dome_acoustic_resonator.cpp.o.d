@@ -812,7 +812,5 @@ CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__chrono/file_clock.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/forward_list \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/quantum_feedback_system.hpp \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/condition_variable \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__stop_token/stop_callback.h \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.hpp \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.hpp

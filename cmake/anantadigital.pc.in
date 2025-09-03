@@ -10,3 +10,6 @@ Cflags: -I${includedir}
 Libs: -L${libdir} -lanantadigital_core
 Requires: 
 Libs.private: -lpthread
+
+
+

@@ -10,7 +10,7 @@ if ! command -v brew &> /dev/null; then
     # Install dependencies manually if needed
 else
     echo "Installing dependencies via Homebrew..."
-    brew install portaudio sndfile cmake
+    brew install portaudio libsndfile cmake
 fi
 
 # Create build directory

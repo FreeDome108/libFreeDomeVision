@@ -5,6 +5,7 @@
 #include <memory>
 #include <functional>
 #include <chrono>
+#include <mutex>
 
 namespace AnantaDigital::Consciousness {
 

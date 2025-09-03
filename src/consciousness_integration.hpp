@@ -3,6 +3,7 @@
 #include "consciousness_hybrid.hpp"
 #include <vector>
 #include <memory>
+#include <mutex>
 
 namespace AnantaDigital::Integration {
 

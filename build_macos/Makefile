@@ -332,54 +332,6 @@ src/anantadigital_core.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.s
 .PHONY : src/anantadigital_core.cpp.s
 
-src/consciousness_hybrid.o: src/consciousness_hybrid.cpp.o
-.PHONY : src/consciousness_hybrid.o
-
-# target to build an object file
-src/consciousness_hybrid.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o
-.PHONY : src/consciousness_hybrid.cpp.o
-
-src/consciousness_hybrid.i: src/consciousness_hybrid.cpp.i
-.PHONY : src/consciousness_hybrid.i
-
-# target to preprocess a source file
-src/consciousness_hybrid.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.i
-.PHONY : src/consciousness_hybrid.cpp.i
-
-src/consciousness_hybrid.s: src/consciousness_hybrid.cpp.s
-.PHONY : src/consciousness_hybrid.s
-
-# target to generate assembly for a file
-src/consciousness_hybrid.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.s
-.PHONY : src/consciousness_hybrid.cpp.s
-
-src/consciousness_integration.o: src/consciousness_integration.cpp.o
-.PHONY : src/consciousness_integration.o
-
-# target to build an object file
-src/consciousness_integration.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o
-.PHONY : src/consciousness_integration.cpp.o
-
-src/consciousness_integration.i: src/consciousness_integration.cpp.i
-.PHONY : src/consciousness_integration.i
-
-# target to preprocess a source file
-src/consciousness_integration.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.i
-.PHONY : src/consciousness_integration.cpp.i
-
-src/consciousness_integration.s: src/consciousness_integration.cpp.s
-.PHONY : src/consciousness_integration.s
-
-# target to generate assembly for a file
-src/consciousness_integration.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.s
-.PHONY : src/consciousness_integration.cpp.s
-
 src/dome_acoustic_resonator.o: src/dome_acoustic_resonator.cpp.o
 .PHONY : src/dome_acoustic_resonator.o
 
@@ -554,12 +506,6 @@ help:
 	@echo "... src/anantadigital_core.o"
 	@echo "... src/anantadigital_core.i"
 	@echo "... src/anantadigital_core.s"
-	@echo "... src/consciousness_hybrid.o"
-	@echo "... src/consciousness_hybrid.i"
-	@echo "... src/consciousness_hybrid.s"
-	@echo "... src/consciousness_integration.o"
-	@echo "... src/consciousness_integration.i"
-	@echo "... src/consciousness_integration.s"
 	@echo "... src/dome_acoustic_resonator.o"
 	@echo "... src/dome_acoustic_resonator.i"
 	@echo "... src/dome_acoustic_resonator.s"

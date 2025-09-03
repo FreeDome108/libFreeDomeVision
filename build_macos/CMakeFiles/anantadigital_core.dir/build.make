@@ -100,38 +100,10 @@ CMakeFiles/anantadigital_core.dir/src/quantum_feedback_system.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/anantadigital_core.dir/src/quantum_feedback_system.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/anton/proj/libs/libsSound/anAntaDigital/src/quantum_feedback_system.cpp -o CMakeFiles/anantadigital_core.dir/src/quantum_feedback_system.cpp.s
 
-CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o: CMakeFiles/anantadigital_core.dir/flags.make
-CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o: /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.cpp
-CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o: CMakeFiles/anantadigital_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o -MF CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o.d -o CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o -c /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.cpp
-
-CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.cpp > CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.i
-
-CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.cpp -o CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.s
-
-CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o: CMakeFiles/anantadigital_core.dir/flags.make
-CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o: /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.cpp
-CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o: CMakeFiles/anantadigital_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o -MF CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o.d -o CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o -c /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.cpp
-
-CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.cpp > CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.i
-
-CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.cpp -o CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.s
-
 CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o: CMakeFiles/anantadigital_core.dir/flags.make
 CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o: /Users/anton/proj/libs/libsSound/anAntaDigital/src/interference_field.cpp
 CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o: CMakeFiles/anantadigital_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o -MF CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o.d -o CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o -c /Users/anton/proj/libs/libsSound/anAntaDigital/src/interference_field.cpp
 
 CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.i: cmake_force
@@ -145,7 +117,7 @@ CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.s: cmake_force
 CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o: CMakeFiles/anantadigital_core.dir/flags.make
 CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o: /Users/anton/proj/libs/libsSound/anAntaDigital/src/dome_acoustic_resonator.cpp
 CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o: CMakeFiles/anantadigital_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o -MF CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o.d -o CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o -c /Users/anton/proj/libs/libsSound/anAntaDigital/src/dome_acoustic_resonator.cpp
 
 CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.i: cmake_force
@@ -160,8 +132,6 @@ CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.s: cmake_force
 anantadigital_core_OBJECTS = \
 "CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.o" \
 "CMakeFiles/anantadigital_core.dir/src/quantum_feedback_system.cpp.o" \
-"CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o" \
-"CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o" \
 "CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o" \
 "CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o"
 
@@ -170,13 +140,11 @@ anantadigital_core_EXTERNAL_OBJECTS =
 
 libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.o
 libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/src/quantum_feedback_system.cpp.o
-libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o
-libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o
 libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.o
 libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/src/dome_acoustic_resonator.cpp.o
 libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/build.make
 libanantadigital_core.2.1.0.dylib: CMakeFiles/anantadigital_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library libanantadigital_core.dylib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libanantadigital_core.dylib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/anantadigital_core.dir/link.txt --verbose=$(VERBOSE)
 	$(CMAKE_COMMAND) -E cmake_symlink_library libanantadigital_core.2.1.0.dylib libanantadigital_core.2.dylib libanantadigital_core.dylib
 
