@@ -167,8 +167,8 @@ int main() {
         // Создаем аудио плеер
         AudioPlayer player;
         
-        // Путь к папке с сэмплами
-        std::string samples_dir = "../samples";
+        // Путь к папке с сэмплами (локальная)
+        std::string samples_dir = "samples";
         
         DIR* dir = opendir(samples_dir.c_str());
         if (!dir) {
@@ -188,7 +188,7 @@ int main() {
             struct stat st;
             if (stat(full_path.c_str(), &st) == 0 && S_ISREG(st.st_mode)) {
                 std::string ext = filename.substr(filename.find_last_of(".") + 1);
-                if (ext == "wav" || ext == "mp3") {
+                if (ext == "wav" || ext == "mp3" || ext == "flac") {
                     audio_files.push_back(full_path);
                     std::cout << "  " << filename << std::endl;
                 }
