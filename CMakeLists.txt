@@ -80,7 +80,7 @@ add_library(anantadigital_core
 set_target_properties(anantadigital_core PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER "src/anantadigital_core.hpp;src/quantum_feedback_system.hpp;src/consciousness_hybrid.hpp;src/consciousness_integration.hpp;src/lubomir_understanding.hpp;src/interference_field.hpp;src/dome_acoustic_resonator.hpp"
+    PUBLIC_HEADER "src/anantadigital_types.hpp;src/anantadigital_core.hpp;src/quantum_feedback_system.hpp;src/consciousness_hybrid.hpp;src/consciousness_integration.hpp;src/lubomir_understanding.hpp;src/interference_field.hpp;src/dome_acoustic_resonator.hpp"
 )
 
 # Platform-specific library properties
