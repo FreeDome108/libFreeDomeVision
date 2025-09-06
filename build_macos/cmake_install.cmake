@@ -61,6 +61,7 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/anantadigital" TYPE FILE FILES
+    "/Users/anton/proj/libs/libsSound/anAntaDigital/src/anantadigital_types.hpp"
     "/Users/anton/proj/libs/libsSound/anAntaDigital/src/anantadigital_core.hpp"
     "/Users/anton/proj/libs/libsSound/anAntaDigital/src/quantum_feedback_system.hpp"
     "/Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.hpp"

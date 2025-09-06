@@ -1,0 +1,240 @@
+# Build directories
+build/
+build_*/
+build-*/
+out/
+cmake-build-*/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# CMake configuration files
+CMakeConfigureLog.yaml
+CMakeScratch/
+pkgRedirects/
+InstallScripts.json
+TargetDirectories.txt
+progress.marks
+Makefile.cmake
+Makefile2
+
+# Compiled binaries and libraries
+*.exe
+*.out
+*.app
+*.dSYM/
+*.su
+*.idb
+*.pdb
+*.dll
+*.so
+*.dylib
+*.a
+*.lib
+*.o
+*.obj
+*.lo
+*.la
+*.al
+*.so.*
+*.dylib.*
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.orig
+
+# Platform specific
+# Windows
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.ilk
+*.exp
+*.manifest
+*.res
+*.rc2
+*.aps
+*.ncb
+*.opt
+*.plg
+*.clw
+*.aps
+*.map
+*.idb
+*.pch
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp_proj
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Android
+*.apk
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+build/
+local.properties
+proguard/
+*.keystore
+!debug.keystore
+
+# iOS
+*.ipa
+*.dSYM.zip
+*.dSYM
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+build/
+*.moved-aside
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace/
+
+# Test coverage
+*.gcov
+*.gcno
+*.gcda
+coverage/
+*.info
+
+# Package managers
+conan.lock
+conandata.yml
+conanfile.txt
+conanfile.py
+vcpkg_installed/
+
+# Documentation build
+docs/_build/
+docs/build/
+site/
+
+# Audio sample files (if they should be ignored)
+# Uncomment the following lines if audio samples should not be tracked
+# *.mp3
+# *.wav
+# *.flac
+# *.aac
+# *.ogg
+# *.m4a
+
+# Large binary files
+*.zip
+*.tar.gz
+*.tar.bz2
+*.rar
+*.7z
+
+# Backup files
+*.backup
+*.bak
+*.old
+*.orig
+*.rej
+
+# Profiling data
+*.prof
+gmon.out
+callgrind.out.*
+cachegrind.out.*
+massif.out.*
+
+# Valgrind
+*.memcheck
+*.helgrind
+*.drd
+*.exp-sgcheck
+
+# Sanitizer output
+*.asan
+*.tsan
+*.msan
+*.ubsan
+
+# Custom build artifacts
+*.bin
+*.hex
+*.elf
+*.map
+*.lst

@@ -55,6 +55,7 @@ namespace AnantaDigital {
         double frequency;
         QuantumSoundState quantum_state;
         SphericalCoord position;
+        std::chrono::high_resolution_clock::time_point timestamp;
         
         // Квантовая волновая функция
         std::function<std::complex<double>(double, double, double, double)> wave_function;

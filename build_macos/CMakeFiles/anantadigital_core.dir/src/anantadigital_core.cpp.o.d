@@ -1,6 +1,7 @@
 CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.o: \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/anantadigital_core.cpp \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/anantadigital_core.hpp \
+  /Users/anton/proj/libs/libsSound/anAntaDigital/src/anantadigital_types.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/complex \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__config_site \
