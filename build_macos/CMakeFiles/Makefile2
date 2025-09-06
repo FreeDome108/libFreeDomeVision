@@ -67,6 +67,7 @@ all: CMakeFiles/anantadigital_core.dir/all
 all: CMakeFiles/anantadigital_demo.dir/all
 all: CMakeFiles/quantum_acoustic_demo.dir/all
 all: CMakeFiles/audio_playback_demo.dir/all
+all: CMakeFiles/lubomir_understanding_demo.dir/all
 all: CMakeFiles/anantadigital_tests.dir/all
 .PHONY : all
 
@@ -75,6 +76,7 @@ codegen: CMakeFiles/anantadigital_core.dir/codegen
 codegen: CMakeFiles/anantadigital_demo.dir/codegen
 codegen: CMakeFiles/quantum_acoustic_demo.dir/codegen
 codegen: CMakeFiles/audio_playback_demo.dir/codegen
+codegen: CMakeFiles/lubomir_understanding_demo.dir/codegen
 codegen: CMakeFiles/anantadigital_tests.dir/codegen
 .PHONY : codegen
 
@@ -87,6 +89,7 @@ clean: CMakeFiles/anantadigital_core.dir/clean
 clean: CMakeFiles/anantadigital_demo.dir/clean
 clean: CMakeFiles/quantum_acoustic_demo.dir/clean
 clean: CMakeFiles/audio_playback_demo.dir/clean
+clean: CMakeFiles/lubomir_understanding_demo.dir/clean
 clean: CMakeFiles/anantadigital_tests.dir/clean
 .PHONY : clean
 
@@ -97,12 +100,12 @@ clean: CMakeFiles/anantadigital_tests.dir/clean
 CMakeFiles/anantadigital_core.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=1,2,3,4,5 "Built target anantadigital_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target anantadigital_core"
 .PHONY : CMakeFiles/anantadigital_core.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/anantadigital_core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/anantadigital_core.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 0
 .PHONY : CMakeFiles/anantadigital_core.dir/rule
@@ -114,7 +117,7 @@ anantadigital_core: CMakeFiles/anantadigital_core.dir/rule
 # codegen rule for target.
 CMakeFiles/anantadigital_core.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=1,2,3,4,5 "Finished codegen for target anantadigital_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Finished codegen for target anantadigital_core"
 .PHONY : CMakeFiles/anantadigital_core.dir/codegen
 
 # clean rule for target.
@@ -129,12 +132,12 @@ CMakeFiles/anantadigital_core.dir/clean:
 CMakeFiles/anantadigital_demo.dir/all: CMakeFiles/anantadigital_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_demo.dir/build.make CMakeFiles/anantadigital_demo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_demo.dir/build.make CMakeFiles/anantadigital_demo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=6,7 "Built target anantadigital_demo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=9,10 "Built target anantadigital_demo"
 .PHONY : CMakeFiles/anantadigital_demo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/anantadigital_demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/anantadigital_demo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 0
 .PHONY : CMakeFiles/anantadigital_demo.dir/rule
@@ -146,7 +149,7 @@ anantadigital_demo: CMakeFiles/anantadigital_demo.dir/rule
 # codegen rule for target.
 CMakeFiles/anantadigital_demo.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_demo.dir/build.make CMakeFiles/anantadigital_demo.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=6,7 "Finished codegen for target anantadigital_demo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=9,10 "Finished codegen for target anantadigital_demo"
 .PHONY : CMakeFiles/anantadigital_demo.dir/codegen
 
 # clean rule for target.
@@ -161,12 +164,12 @@ CMakeFiles/anantadigital_demo.dir/clean:
 CMakeFiles/quantum_acoustic_demo.dir/all: CMakeFiles/anantadigital_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_acoustic_demo.dir/build.make CMakeFiles/quantum_acoustic_demo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_acoustic_demo.dir/build.make CMakeFiles/quantum_acoustic_demo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=14,15 "Built target quantum_acoustic_demo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=19,20 "Built target quantum_acoustic_demo"
 .PHONY : CMakeFiles/quantum_acoustic_demo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/quantum_acoustic_demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/quantum_acoustic_demo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 0
 .PHONY : CMakeFiles/quantum_acoustic_demo.dir/rule
@@ -178,7 +181,7 @@ quantum_acoustic_demo: CMakeFiles/quantum_acoustic_demo.dir/rule
 # codegen rule for target.
 CMakeFiles/quantum_acoustic_demo.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/quantum_acoustic_demo.dir/build.make CMakeFiles/quantum_acoustic_demo.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=14,15 "Finished codegen for target quantum_acoustic_demo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=19,20 "Finished codegen for target quantum_acoustic_demo"
 .PHONY : CMakeFiles/quantum_acoustic_demo.dir/codegen
 
 # clean rule for target.
@@ -193,12 +196,12 @@ CMakeFiles/quantum_acoustic_demo.dir/clean:
 CMakeFiles/audio_playback_demo.dir/all: CMakeFiles/anantadigital_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_playback_demo.dir/build.make CMakeFiles/audio_playback_demo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_playback_demo.dir/build.make CMakeFiles/audio_playback_demo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=12,13 "Built target audio_playback_demo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=15,16 "Built target audio_playback_demo"
 .PHONY : CMakeFiles/audio_playback_demo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/audio_playback_demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/audio_playback_demo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 0
 .PHONY : CMakeFiles/audio_playback_demo.dir/rule
@@ -210,7 +213,7 @@ audio_playback_demo: CMakeFiles/audio_playback_demo.dir/rule
 # codegen rule for target.
 CMakeFiles/audio_playback_demo.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_playback_demo.dir/build.make CMakeFiles/audio_playback_demo.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=12,13 "Finished codegen for target audio_playback_demo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=15,16 "Finished codegen for target audio_playback_demo"
 .PHONY : CMakeFiles/audio_playback_demo.dir/codegen
 
 # clean rule for target.
@@ -219,18 +222,50 @@ CMakeFiles/audio_playback_demo.dir/clean:
 .PHONY : CMakeFiles/audio_playback_demo.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/lubomir_understanding_demo.dir
+
+# All Build rule for target.
+CMakeFiles/lubomir_understanding_demo.dir/all: CMakeFiles/anantadigital_core.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=17,18 "Built target lubomir_understanding_demo"
+.PHONY : CMakeFiles/lubomir_understanding_demo.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/lubomir_understanding_demo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/lubomir_understanding_demo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 0
+.PHONY : CMakeFiles/lubomir_understanding_demo.dir/rule
+
+# Convenience name for target.
+lubomir_understanding_demo: CMakeFiles/lubomir_understanding_demo.dir/rule
+.PHONY : lubomir_understanding_demo
+
+# codegen rule for target.
+CMakeFiles/lubomir_understanding_demo.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=17,18 "Finished codegen for target lubomir_understanding_demo"
+.PHONY : CMakeFiles/lubomir_understanding_demo.dir/codegen
+
+# clean rule for target.
+CMakeFiles/lubomir_understanding_demo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/clean
+.PHONY : CMakeFiles/lubomir_understanding_demo.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/anantadigital_tests.dir
 
 # All Build rule for target.
 CMakeFiles/anantadigital_tests.dir/all: CMakeFiles/anantadigital_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_tests.dir/build.make CMakeFiles/anantadigital_tests.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_tests.dir/build.make CMakeFiles/anantadigital_tests.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=8,9,10,11 "Built target anantadigital_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=11,12,13,14 "Built target anantadigital_tests"
 .PHONY : CMakeFiles/anantadigital_tests.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/anantadigital_tests.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 9
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/anantadigital_tests.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles 0
 .PHONY : CMakeFiles/anantadigital_tests.dir/rule
@@ -242,7 +277,7 @@ anantadigital_tests: CMakeFiles/anantadigital_tests.dir/rule
 # codegen rule for target.
 CMakeFiles/anantadigital_tests.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_tests.dir/build.make CMakeFiles/anantadigital_tests.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=8,9,10,11 "Finished codegen for target anantadigital_tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles --progress-num=11,12,13,14 "Finished codegen for target anantadigital_tests"
 .PHONY : CMakeFiles/anantadigital_tests.dir/codegen
 
 # clean rule for target.

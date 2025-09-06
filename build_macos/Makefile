@@ -224,6 +224,19 @@ audio_playback_demo/fast:
 .PHONY : audio_playback_demo/fast
 
 #=============================================================================
+# Target rules for targets named lubomir_understanding_demo
+
+# Build rule for target.
+lubomir_understanding_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lubomir_understanding_demo
+.PHONY : lubomir_understanding_demo
+
+# fast build rule for target.
+lubomir_understanding_demo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/build
+.PHONY : lubomir_understanding_demo/fast
+
+#=============================================================================
 # Target rules for targets named anantadigital_tests
 
 # Build rule for target.
@@ -284,6 +297,30 @@ examples/audio_playback_demo.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/audio_playback_demo.dir/build.make CMakeFiles/audio_playback_demo.dir/examples/audio_playback_demo.cpp.s
 .PHONY : examples/audio_playback_demo.cpp.s
 
+examples/lubomir_understanding_demo.o: examples/lubomir_understanding_demo.cpp.o
+.PHONY : examples/lubomir_understanding_demo.o
+
+# target to build an object file
+examples/lubomir_understanding_demo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/examples/lubomir_understanding_demo.cpp.o
+.PHONY : examples/lubomir_understanding_demo.cpp.o
+
+examples/lubomir_understanding_demo.i: examples/lubomir_understanding_demo.cpp.i
+.PHONY : examples/lubomir_understanding_demo.i
+
+# target to preprocess a source file
+examples/lubomir_understanding_demo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/examples/lubomir_understanding_demo.cpp.i
+.PHONY : examples/lubomir_understanding_demo.cpp.i
+
+examples/lubomir_understanding_demo.s: examples/lubomir_understanding_demo.cpp.s
+.PHONY : examples/lubomir_understanding_demo.s
+
+# target to generate assembly for a file
+examples/lubomir_understanding_demo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lubomir_understanding_demo.dir/build.make CMakeFiles/lubomir_understanding_demo.dir/examples/lubomir_understanding_demo.cpp.s
+.PHONY : examples/lubomir_understanding_demo.cpp.s
+
 examples/quantum_acoustic_demo.o: examples/quantum_acoustic_demo.cpp.o
 .PHONY : examples/quantum_acoustic_demo.o
 
@@ -332,6 +369,54 @@ src/anantadigital_core.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.s
 .PHONY : src/anantadigital_core.cpp.s
 
+src/consciousness_hybrid.o: src/consciousness_hybrid.cpp.o
+.PHONY : src/consciousness_hybrid.o
+
+# target to build an object file
+src/consciousness_hybrid.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.o
+.PHONY : src/consciousness_hybrid.cpp.o
+
+src/consciousness_hybrid.i: src/consciousness_hybrid.cpp.i
+.PHONY : src/consciousness_hybrid.i
+
+# target to preprocess a source file
+src/consciousness_hybrid.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.i
+.PHONY : src/consciousness_hybrid.cpp.i
+
+src/consciousness_hybrid.s: src/consciousness_hybrid.cpp.s
+.PHONY : src/consciousness_hybrid.s
+
+# target to generate assembly for a file
+src/consciousness_hybrid.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_hybrid.cpp.s
+.PHONY : src/consciousness_hybrid.cpp.s
+
+src/consciousness_integration.o: src/consciousness_integration.cpp.o
+.PHONY : src/consciousness_integration.o
+
+# target to build an object file
+src/consciousness_integration.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.o
+.PHONY : src/consciousness_integration.cpp.o
+
+src/consciousness_integration.i: src/consciousness_integration.cpp.i
+.PHONY : src/consciousness_integration.i
+
+# target to preprocess a source file
+src/consciousness_integration.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.i
+.PHONY : src/consciousness_integration.cpp.i
+
+src/consciousness_integration.s: src/consciousness_integration.cpp.s
+.PHONY : src/consciousness_integration.s
+
+# target to generate assembly for a file
+src/consciousness_integration.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/consciousness_integration.cpp.s
+.PHONY : src/consciousness_integration.cpp.s
+
 src/dome_acoustic_resonator.o: src/dome_acoustic_resonator.cpp.o
 .PHONY : src/dome_acoustic_resonator.o
 
@@ -379,6 +464,30 @@ src/interference_field.s: src/interference_field.cpp.s
 src/interference_field.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/interference_field.cpp.s
 .PHONY : src/interference_field.cpp.s
+
+src/lubomir_understanding.o: src/lubomir_understanding.cpp.o
+.PHONY : src/lubomir_understanding.o
+
+# target to build an object file
+src/lubomir_understanding.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/lubomir_understanding.cpp.o
+.PHONY : src/lubomir_understanding.cpp.o
+
+src/lubomir_understanding.i: src/lubomir_understanding.cpp.i
+.PHONY : src/lubomir_understanding.i
+
+# target to preprocess a source file
+src/lubomir_understanding.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/lubomir_understanding.cpp.i
+.PHONY : src/lubomir_understanding.cpp.i
+
+src/lubomir_understanding.s: src/lubomir_understanding.cpp.s
+.PHONY : src/lubomir_understanding.s
+
+# target to generate assembly for a file
+src/lubomir_understanding.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/anantadigital_core.dir/build.make CMakeFiles/anantadigital_core.dir/src/lubomir_understanding.cpp.s
+.PHONY : src/lubomir_understanding.cpp.s
 
 src/quantum_feedback_system.o: src/quantum_feedback_system.cpp.o
 .PHONY : src/quantum_feedback_system.o
@@ -493,6 +602,7 @@ help:
 	@echo "... anantadigital_demo"
 	@echo "... anantadigital_tests"
 	@echo "... audio_playback_demo"
+	@echo "... lubomir_understanding_demo"
 	@echo "... quantum_acoustic_demo"
 	@echo "... examples/anantadigital_demo.o"
 	@echo "... examples/anantadigital_demo.i"
@@ -500,18 +610,30 @@ help:
 	@echo "... examples/audio_playback_demo.o"
 	@echo "... examples/audio_playback_demo.i"
 	@echo "... examples/audio_playback_demo.s"
+	@echo "... examples/lubomir_understanding_demo.o"
+	@echo "... examples/lubomir_understanding_demo.i"
+	@echo "... examples/lubomir_understanding_demo.s"
 	@echo "... examples/quantum_acoustic_demo.o"
 	@echo "... examples/quantum_acoustic_demo.i"
 	@echo "... examples/quantum_acoustic_demo.s"
 	@echo "... src/anantadigital_core.o"
 	@echo "... src/anantadigital_core.i"
 	@echo "... src/anantadigital_core.s"
+	@echo "... src/consciousness_hybrid.o"
+	@echo "... src/consciousness_hybrid.i"
+	@echo "... src/consciousness_hybrid.s"
+	@echo "... src/consciousness_integration.o"
+	@echo "... src/consciousness_integration.i"
+	@echo "... src/consciousness_integration.s"
 	@echo "... src/dome_acoustic_resonator.o"
 	@echo "... src/dome_acoustic_resonator.i"
 	@echo "... src/dome_acoustic_resonator.s"
 	@echo "... src/interference_field.o"
 	@echo "... src/interference_field.i"
 	@echo "... src/interference_field.s"
+	@echo "... src/lubomir_understanding.o"
+	@echo "... src/lubomir_understanding.i"
+	@echo "... src/lubomir_understanding.s"
 	@echo "... src/quantum_feedback_system.o"
 	@echo "... src/quantum_feedback_system.i"
 	@echo "... src/quantum_feedback_system.s"

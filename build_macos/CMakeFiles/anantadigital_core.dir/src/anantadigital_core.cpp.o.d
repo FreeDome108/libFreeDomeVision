@@ -814,4 +814,6 @@ CMakeFiles/anantadigital_core.dir/src/anantadigital_core.cpp.o: \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/quantum_feedback_system.hpp \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.hpp \
   /Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.hpp \
+  /Users/anton/proj/libs/libsSound/anAntaDigital/src/interference_field.hpp \
+  /Users/anton/proj/libs/libsSound/anAntaDigital/src/dome_acoustic_resonator.hpp \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/iostream

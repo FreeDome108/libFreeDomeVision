@@ -2,6 +2,7 @@
 /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles/anantadigital_demo.dir
 /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles/quantum_acoustic_demo.dir
 /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles/audio_playback_demo.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles/lubomir_understanding_demo.dir
 /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles/anantadigital_tests.dir
 /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles/test.dir
 /Users/anton/proj/libs/libsSound/anAntaDigital/build_macos/CMakeFiles/edit_cache.dir

@@ -66,5 +66,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/anantadigital_demo.dir/DependInfo.cmake"
   "CMakeFiles/quantum_acoustic_demo.dir/DependInfo.cmake"
   "CMakeFiles/audio_playback_demo.dir/DependInfo.cmake"
+  "CMakeFiles/lubomir_understanding_demo.dir/DependInfo.cmake"
   "CMakeFiles/anantadigital_tests.dir/DependInfo.cmake"
   )

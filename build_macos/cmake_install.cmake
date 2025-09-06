@@ -63,6 +63,11 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/anantadigital" TYPE FILE FILES
     "/Users/anton/proj/libs/libsSound/anAntaDigital/src/anantadigital_core.hpp"
     "/Users/anton/proj/libs/libsSound/anAntaDigital/src/quantum_feedback_system.hpp"
+    "/Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_hybrid.hpp"
+    "/Users/anton/proj/libs/libsSound/anAntaDigital/src/consciousness_integration.hpp"
+    "/Users/anton/proj/libs/libsSound/anAntaDigital/src/lubomir_understanding.hpp"
+    "/Users/anton/proj/libs/libsSound/anAntaDigital/src/interference_field.hpp"
+    "/Users/anton/proj/libs/libsSound/anAntaDigital/src/dome_acoustic_resonator.hpp"
     )
 endif()
 
