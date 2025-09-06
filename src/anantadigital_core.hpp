@@ -44,6 +44,18 @@ namespace AnantaDigital {
         double theta;   // полярный угол (0-π)
         double phi;     // азимутальный угол (0-2π)
         double height;  // высота в куполе
+        
+        // Оператор сравнения для использования в std::map
+        bool operator<(const SphericalCoord& other) const {
+            if (r != other.r) return r < other.r;
+            if (theta != other.theta) return theta < other.theta;
+            if (phi != other.phi) return phi < other.phi;
+            return height < other.height;
+        }
+        
+        bool operator==(const SphericalCoord& other) const {
+            return r == other.r && theta == other.theta && phi == other.phi && height == other.height;
+        }
     };
 
     // Комплексное звуковое поле с квантовыми свойствами
@@ -59,57 +71,9 @@ namespace AnantaDigital {
         std::function<std::complex<double>(double, double, double, double)> wave_function;
     };
 
-    // Интерференционное поле
-    class InterferenceField {
-    private:
-        InterferenceFieldType type_;
-        std::vector<QuantumSoundField> source_fields_;
-        SphericalCoord center_position_;
-        double field_radius_;
-        mutable std::mutex field_mutex_;
-
-    public:
-        InterferenceField(InterferenceFieldType type, SphericalCoord center, double radius);
-        
-        // Добавить источник звукового поля
-        void addSourceField(const QuantumSoundField& field);
-        
-        // Вычислить результирующую интерференцию в точке
-        std::complex<double> calculateInterference(const SphericalCoord& position, double time) const;
-        
-        // Квантовая суперпозиция полей
-        QuantumSoundField quantumSuperposition(const std::vector<QuantumSoundField>& fields) const;
-        
-        // Обновить поле с учетом квантовых эффектов
-        void updateQuantumState(double dt);
-        
-        // Создать квантовую запутанность между полями
-        void createQuantumEntanglement(size_t field1_idx, size_t field2_idx);
-    };
-
-    // Акустический резонатор для купола
-    class DomeAcousticResonator {
-    private:
-        double dome_radius_;
-        double dome_height_;
-        std::vector<double> resonant_frequencies_;
-        std::map<double, double> acoustic_properties_;
-
-    public:
-        DomeAcousticResonator(double radius, double height);
-        
-        // Вычислить собственные частоты купола
-        std::vector<double> calculateEigenFrequencies() const;
-        
-        // Моделирование акустических свойств материалов
-        void setMaterialProperties(const std::map<double, double>& properties);
-        
-        // Вычислить время реверберации
-        double calculateReverbTime(double frequency) const;
-        
-        // Оптимизация частотной характеристики
-        void optimizeFrequencyResponse(const std::vector<double>& target_frequencies);
-    };
+    // Forward declarations
+    class InterferenceField;
+    class DomeAcousticResonator;
 
     // Основной класс AnantaDigital
     class AnantaDigitalCore {

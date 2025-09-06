@@ -1,0 +1,13 @@
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/anantadigital_core.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/anantadigital_demo.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/quantum_acoustic_demo.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/audio_playback_demo.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/lubomir_understanding_demo.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/anantadigital_tests.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/test.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/edit_cache.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/rebuild_cache.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/list_install_components.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/install.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/install/local.dir
+/Users/anton/proj/libs/libsSound/anAntaDigital/build_lubomir/CMakeFiles/install/strip.dir

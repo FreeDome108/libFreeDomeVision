@@ -62,7 +62,7 @@ void ConsciousnessIntegration::createCollectiveConsciousness() {
 }
 
 bool ConsciousnessIntegration::isIntegrated() const {
-    std::lock_guard<std::mutex> lock(integration_mutex_);
+    std::lock_guard<std::mutex> lock(const_cast<std::mutex&>(integration_mutex_));
     return is_integrated_;
 }
 
