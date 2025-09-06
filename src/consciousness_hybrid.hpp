@@ -59,6 +59,13 @@ public:
     
     // Очистка ресурсов
     void cleanup();
+    
+private:
+    // Приватные методы
+    void updateStateSuperposition(double dt);
+    void normalizeStateAmplitudes();
+    void collapseToState();
+    void notifyObservers();
 };
 
 } // namespace AnantaDigital::Consciousness

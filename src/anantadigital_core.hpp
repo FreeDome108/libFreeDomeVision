@@ -11,6 +11,8 @@
 #include "quantum_feedback_system.hpp"
 #include "consciousness_hybrid.hpp"
 #include "consciousness_integration.hpp"
+#include "interference_field.hpp"
+#include "dome_acoustic_resonator.hpp"
 
 // Forward declarations
 namespace AnantaDigital::Feedback {

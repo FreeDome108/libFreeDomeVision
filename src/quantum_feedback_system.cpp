@@ -1,147 +1,149 @@
 #include "quantum_feedback_system.hpp"
-#include <iostream>
-#include <cmath>
 #include <algorithm>
+#include <cmath>
+#include <random>
 
-namespace AnantaDigital {
+namespace AnantaDigital::Feedback {
 
-Feedback::QuantumFeedbackSystem::QuantumFeedbackSystem(std::chrono::microseconds nominal_delay, double sensitivity)
-    : nominal_delay_(nominal_delay)
-    , max_correction_window_(std::chrono::microseconds(100000))
-    , feedback_sensitivity_(sensitivity)
-    , quantum_uncertainty_threshold_(0.1)
-    , sample_rate_(44100.0)
-    , quantum_threshold_(0.7)
-    , coherence_factor_(1.0)
-    , entanglement_strength_(0.0)
-    , quantum_state_(QuantumState::COHERENT)
-    , feedback_buffer_()
-    , quantum_oscillator_()
-{
-    feedback_buffer_.reserve(1024);
-    quantum_oscillator_.reserve(256);
+QuantumFeedbackSystem::QuantumFeedbackSystem(std::chrono::microseconds delay, double threshold)
+    : feedback_delay_(delay)
+    , coherence_threshold_(threshold)
+    , last_feedback_(std::chrono::high_resolution_clock::now()) {
+    feedback_buffer_.reserve(1024); // Предварительное выделение памяти
 }
 
-Feedback::QuantumFeedbackSystem::~QuantumFeedbackSystem() = default;
-
-void Feedback::QuantumFeedbackSystem::processQuantumFeedback(const std::vector<double>& input_signal) {
-    if (input_signal.empty()) return;
+std::complex<double> QuantumFeedbackSystem::processQuantumSignal(const std::complex<double>& input) {
+    std::lock_guard<std::mutex> lock(feedback_mutex_);
     
-    // Analyze quantum coherence
-    double coherence = calculateCoherence(input_signal);
-    coherence_factor_ = std::clamp(coherence, 0.0, 1.0);
+    auto now = std::chrono::high_resolution_clock::now();
+    auto time_since_last = std::chrono::duration_cast<std::chrono::microseconds>(now - last_feedback_);
     
-    // Update quantum state
-    updateQuantumState();
-    
-    // Generate quantum feedback
-    generateQuantumFeedback(input_signal);
-    
-    // Apply quantum corrections
-    applyQuantumCorrections();
-}
-
-double Feedback::QuantumFeedbackSystem::calculateCoherence(const std::vector<double>& signal) {
-    if (signal.size() < 2) return 1.0;
-    
-    double sum = 0.0;
-    double sum_sq = 0.0;
-    double cross_correlation = 0.0;
-    
-    for (size_t i = 0; i < signal.size(); ++i) {
-        sum += signal[i];
-        sum_sq += signal[i] * signal[i];
+    // Проверяем, прошло ли достаточно времени для обратной связи
+    if (time_since_last >= feedback_delay_) {
+        // Вычисляем сигнал обратной связи
+        auto feedback_signal = calculateFeedbackSignal(input);
         
-        if (i > 0) {
-            cross_correlation += signal[i] * signal[i-1];
-        }
-    }
-    
-    double mean = sum / signal.size();
-    double variance = (sum_sq / signal.size()) - (mean * mean);
-    
-    if (variance <= 0.0) return 1.0;
-    
-    double normalized_correlation = cross_correlation / (signal.size() - 1);
-    double coherence = std::abs(normalized_correlation) / std::sqrt(variance);
-    
-    return std::clamp(coherence, 0.0, 1.0);
-}
-
-void Feedback::QuantumFeedbackSystem::updateQuantumState() {
-    if (coherence_factor_ > quantum_threshold_) {
-        if (quantum_state_ != QuantumState::COHERENT) {
-            quantum_state_ = QuantumState::COHERENT;
-            std::cout << "Quantum state: COHERENT (coherence: " << coherence_factor_ << ")" << std::endl;
-        }
-    } else if (coherence_factor_ > quantum_threshold_ * 0.5) {
-        if (quantum_state_ != QuantumState::PARTIALLY_COHERENT) {
-            quantum_state_ = QuantumState::PARTIALLY_COHERENT;
-            std::cout << "Quantum state: PARTIALLY_COHERENT (coherence: " << coherence_factor_ << ")" << std::endl;
-        }
-    } else {
-        if (quantum_state_ != QuantumState::INCOHERENT) {
-            quantum_state_ = QuantumState::INCOHERENT;
-            std::cout << "Quantum state: INCOHERENT (coherence: " << coherence_factor_ << ")" << std::endl;
-        }
-    }
-}
-
-void Feedback::QuantumFeedbackSystem::generateQuantumFeedback(const std::vector<double>& input_signal) {
-    feedback_buffer_.clear();
-    feedback_buffer_.reserve(input_signal.size());
-    
-    for (double sample : input_signal) {
-        // Apply quantum feedback based on coherence
-        double feedback_sample = sample;
+        // Применяем квантовую коррекцию
+        auto corrected_signal = applyQuantumCorrection(input, feedback_signal);
         
-        if (quantum_state_ == QuantumState::COHERENT) {
-            // Enhance coherent signals
-            feedback_sample *= (1.0 + coherence_factor_ * 0.1);
-        } else if (quantum_state_ == QuantumState::PARTIALLY_COHERENT) {
-            // Moderate enhancement
-            feedback_sample *= (1.0 + coherence_factor_ * 0.05);
-        } else {
-            // Reduce incoherent signals
-            feedback_sample *= (0.8 + coherence_factor_ * 0.2);
+        // Добавляем в буфер обратной связи
+        feedback_buffer_.push_back(feedback_signal);
+        
+        // Ограничиваем размер буфера
+        if (feedback_buffer_.size() > 1024) {
+            feedback_buffer_.erase(feedback_buffer_.begin());
         }
         
-        feedback_buffer_.push_back(feedback_sample);
+        last_feedback_ = now;
+        return corrected_signal;
     }
-}
-
-void Feedback::QuantumFeedbackSystem::applyQuantumCorrections() {
-    if (feedback_buffer_.empty()) return;
     
-    // Apply quantum corrections based on entanglement strength
-    for (auto& sample : feedback_buffer_) {
-        if (entanglement_strength_ > 0.5) {
-            // Strong entanglement - enhance signal
-            sample *= (1.0 + entanglement_strength_ * 0.2);
-        } else {
-            // Weak entanglement - moderate enhancement
-            sample *= (1.0 + entanglement_strength_ * 0.1);
-        }
-    }
+    // Если время не пришло, возвращаем исходный сигнал
+    return input;
 }
 
-std::vector<double> Feedback::QuantumFeedbackSystem::getProcessedSignal() const {
+std::vector<std::complex<double>> QuantumFeedbackSystem::getFeedback() const {
+    std::lock_guard<std::mutex> lock(feedback_mutex_);
     return feedback_buffer_;
 }
 
-bool Feedback::QuantumFeedbackSystem::initialize() {
-    is_running_ = true;
-    return true;
+void QuantumFeedbackSystem::setFeedbackDelay(std::chrono::microseconds delay) {
+    std::lock_guard<std::mutex> lock(feedback_mutex_);
+    feedback_delay_ = delay;
 }
 
-void Feedback::QuantumFeedbackSystem::shutdown() {
-    is_running_ = false;
+void QuantumFeedbackSystem::setCoherenceThreshold(double threshold) {
+    std::lock_guard<std::mutex> lock(feedback_mutex_);
+    coherence_threshold_ = std::max(0.0, std::min(1.0, threshold));
 }
 
+void QuantumFeedbackSystem::reset() {
+    std::lock_guard<std::mutex> lock(feedback_mutex_);
+    feedback_buffer_.clear();
+    last_feedback_ = std::chrono::high_resolution_clock::now();
+}
 
+bool QuantumFeedbackSystem::isCoherent() const {
+    std::lock_guard<std::mutex> lock(feedback_mutex_);
+    
+    if (feedback_buffer_.empty()) {
+        return true; // Пустой буфер считается когерентным
+    }
+    
+    // Вычисляем дисперсию фазы
+    double phase_variance = calculatePhaseVariance();
+    
+    // Проверяем когерентность
+    return phase_variance < coherence_threshold_;
+}
 
+std::complex<double> QuantumFeedbackSystem::calculateFeedbackSignal(const std::complex<double>& input) const {
+    // Простая модель квантовой обратной связи
+    // Основана на принципах квантовой механики
+    
+    double amplitude = std::abs(input);
+    double phase = std::arg(input);
+    
+    // Квантовая неопределенность
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    static std::normal_distribution<double> noise(0.0, 0.1);
+    
+    double quantum_noise = noise(gen);
+    
+    // Вычисляем обратную связь с учетом квантовых эффектов
+    double feedback_amplitude = amplitude * (1.0 + quantum_noise);
+    double feedback_phase = phase + quantum_noise * 0.1;
+    
+    return std::polar(feedback_amplitude, feedback_phase);
+}
 
+std::complex<double> QuantumFeedbackSystem::applyQuantumCorrection(const std::complex<double>& input, 
+                                                                  const std::complex<double>& feedback) const {
+    // Применяем квантовую коррекцию к входному сигналу
+    
+    double input_amp = std::abs(input);
+    double input_phase = std::arg(input);
+    
+    double feedback_amp = std::abs(feedback);
+    double feedback_phase = std::arg(feedback);
+    
+    // Квантовая коррекция амплитуды
+    double corrected_amp = input_amp * (1.0 - 0.1 * (feedback_amp - input_amp) / input_amp);
+    corrected_amp = std::max(0.0, corrected_amp); // Не может быть отрицательной
+    
+    // Квантовая коррекция фазы
+    double phase_diff = feedback_phase - input_phase;
+    double corrected_phase = input_phase + 0.1 * phase_diff;
+    
+    return std::polar(corrected_amp, corrected_phase);
+}
 
+double QuantumFeedbackSystem::calculatePhaseVariance() const {
+    if (feedback_buffer_.size() < 2) {
+        return 0.0;
+    }
+    
+    // Вычисляем среднюю фазу
+    double mean_phase = 0.0;
+    for (const auto& signal : feedback_buffer_) {
+        mean_phase += std::arg(signal);
+    }
+    mean_phase /= feedback_buffer_.size();
+    
+    // Вычисляем дисперсию фазы
+    double variance = 0.0;
+    for (const auto& signal : feedback_buffer_) {
+        double phase_diff = std::arg(signal) - mean_phase;
+        // Нормализуем разность фаз к [-π, π]
+        while (phase_diff > M_PI) phase_diff -= 2.0 * M_PI;
+        while (phase_diff < -M_PI) phase_diff += 2.0 * M_PI;
+        
+        variance += phase_diff * phase_diff;
+    }
+    variance /= feedback_buffer_.size();
+    
+    return variance;
+}
 
-
-} // namespace AnantaDigital
+} // namespace AnantaDigital::Feedback

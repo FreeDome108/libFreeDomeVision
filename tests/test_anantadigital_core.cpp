@@ -41,7 +41,7 @@ void test_interference_field() {
     source.amplitude = std::complex<double>(1.0, 0.0);
     source.frequency = 440.0;
     source.position = {1.0, M_PI/4, 0.0, 0.5};
-    source.quantum_state = QuantumSoundField::QuantumSoundState::COHERENT;
+    source.quantum_state = QuantumSoundState::COHERENT;
     
     field.addSourceField(source);
     
@@ -63,14 +63,14 @@ void test_quantum_sound_field() {
     field.frequency = 880.0;
     field.phase = M_PI/4;
     field.position = {1.0, M_PI/2, M_PI, 0.5};
-    field.quantum_state = QuantumSoundField::QuantumSoundState::SUPERPOSITION;
+    field.quantum_state = QuantumSoundState::SUPERPOSITION;
     
     // Test properties
     assert(std::abs(field.amplitude.real() - 2.0) < 1e-6);
     assert(std::abs(field.amplitude.imag() - 1.0) < 1e-6);
     assert(std::abs(field.frequency - 880.0) < 1e-6);
     assert(std::abs(field.phase - M_PI/4) < 1e-6);
-    assert(field.quantum_state == QuantumSoundField::QuantumSoundState::SUPERPOSITION);
+    assert(field.quantum_state == QuantumSoundState::SUPERPOSITION);
     
     std::cout << "QuantumSoundField tests passed!" << std::endl;
 }

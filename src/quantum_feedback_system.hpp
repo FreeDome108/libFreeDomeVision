@@ -39,6 +39,13 @@ public:
     
     // Проверка когерентности
     bool isCoherent() const;
+    
+private:
+    // Приватные методы
+    std::complex<double> calculateFeedbackSignal(const std::complex<double>& input) const;
+    std::complex<double> applyQuantumCorrection(const std::complex<double>& input, 
+                                               const std::complex<double>& feedback) const;
+    double calculatePhaseVariance() const;
 };
 
 } // namespace AnantaDigital::Feedback

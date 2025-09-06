@@ -32,7 +32,7 @@ int main() {
         source.amplitude = std::complex<double>(1.0, 0.0);
         source.frequency = 440.0; // 440 Hz
         source.position = {3.0, M_PI/4, M_PI/2, 1.5};
-        source.quantum_state = QuantumSoundField::QuantumSoundState::COHERENT;
+        source.quantum_state = QuantumSoundState::COHERENT;
         
         field.addSourceField(source);
         std::cout << "Added sound source: " << source.frequency << " Hz at position "

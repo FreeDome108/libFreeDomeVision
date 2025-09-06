@@ -1,196 +1,201 @@
 #include "consciousness_hybrid.hpp"
-#include <iostream>
-#include <cmath>
 #include <algorithm>
+#include <cmath>
 #include <random>
 
-namespace AnantaDigital {
+namespace AnantaDigital::Consciousness {
 
-ConsciousnessHybrid::ConsciousnessHybrid(double consciousness_threshold, double hybrid_factor)
-    : consciousness_threshold_(consciousness_threshold)
-    , hybrid_factor_(hybrid_factor)
-    , consciousness_level_(0.0)
-    , hybrid_state_(HybridState::UNCONSCIOUS)
-    , consciousness_buffer_()
-    , hybrid_processor_()
-    , random_generator_(std::random_device{}())
-{
-    consciousness_buffer_.reserve(512);
-    hybrid_processor_.reserve(256);
+ConsciousnessHybrid::ConsciousnessHybrid() {
+    // Инициализация квантового сознания
+    consciousness_.wave_function = std::complex<double>(1.0, 0.0);
+    consciousness_.state = ConsciousnessState::AWARE;
+    consciousness_.coherence_time = 1.0;
+    consciousness_.last_update = std::chrono::high_resolution_clock::now();
+    
+    // Инициализация амплитуд состояний
+    consciousness_.state_amplitudes.resize(5); // 5 состояний сознания
+    consciousness_.state_amplitudes[0] = std::complex<double>(1.0, 0.0); // AWARE
+    consciousness_.state_amplitudes[1] = std::complex<double>(0.0, 0.0); // MEDITATIVE
+    consciousness_.state_amplitudes[2] = std::complex<double>(0.0, 0.0); // QUANTUM_FLUX
+    consciousness_.state_amplitudes[3] = std::complex<double>(0.0, 0.0); // COHERENT
+    consciousness_.state_amplitudes[4] = std::complex<double>(0.0, 0.0); // ENTANGLED
 }
 
-ConsciousnessHybrid::~ConsciousnessHybrid() = default;
-
-void ConsciousnessHybrid::processConsciousness(const std::vector<double>& input_signal) {
-    if (input_signal.empty()) return;
+bool ConsciousnessHybrid::initialize() {
+    std::lock_guard<std::mutex> lock(consciousness_mutex_);
     
-    // Analyze consciousness level
-    consciousness_level_ = calculateConsciousnessLevel(input_signal);
+    // Нормализуем амплитуды состояний
+    normalizeStateAmplitudes();
     
-    // Update hybrid state
-    updateHybridState();
-    
-    // Process consciousness
-    processConsciousnessSignal(input_signal);
-    
-    // Apply hybrid processing
-    applyHybridProcessing();
+    return true;
 }
 
-double ConsciousnessHybrid::calculateConsciousnessLevel(const std::vector<double>& signal) {
-    if (signal.size() < 10) return 0.0;
+void ConsciousnessHybrid::updateQuantumState(double dt) {
+    std::lock_guard<std::mutex> lock(consciousness_mutex_);
     
-    // Calculate complexity as a measure of consciousness
-    double complexity = 0.0;
-    double entropy = 0.0;
+    // Обновляем суперпозицию состояний
+    updateStateSuperposition(dt);
     
-    // Frequency domain analysis
-    std::vector<double> frequencies;
-    frequencies.reserve(signal.size() / 2);
+    // Обновляем время когерентности
+    consciousness_.coherence_time -= dt * 0.1;
+    consciousness_.coherence_time = std::max(0.0, consciousness_.coherence_time);
     
-    for (size_t i = 1; i < signal.size(); ++i) {
-        double freq = std::abs(signal[i] - signal[i-1]);
-        frequencies.push_back(freq);
+    // Обновляем временную метку
+    consciousness_.last_update = std::chrono::high_resolution_clock::now();
+    
+    // Уведомляем наблюдателей
+    notifyObservers();
+}
+
+void ConsciousnessHybrid::enterMeditativeState() {
+    std::lock_guard<std::mutex> lock(consciousness_mutex_);
+    
+    // Переход в медитативное состояние
+    consciousness_.state = ConsciousnessState::MEDITATIVE;
+    
+    // Обновляем амплитуды состояний
+    consciousness_.state_amplitudes[0] = std::complex<double>(0.2, 0.0); // AWARE
+    consciousness_.state_amplitudes[1] = std::complex<double>(0.8, 0.0); // MEDITATIVE
+    consciousness_.state_amplitudes[2] = std::complex<double>(0.0, 0.0); // QUANTUM_FLUX
+    consciousness_.state_amplitudes[3] = std::complex<double>(0.0, 0.0); // COHERENT
+    consciousness_.state_amplitudes[4] = std::complex<double>(0.0, 0.0); // ENTANGLED
+    
+    // Нормализуем
+    normalizeStateAmplitudes();
+    
+    // Увеличиваем время когерентности
+    consciousness_.coherence_time = 2.0;
+}
+
+void ConsciousnessHybrid::createQuantumEntanglement(ConsciousnessHybrid& other) {
+    std::lock_guard<std::mutex> lock1(consciousness_mutex_);
+    std::lock_guard<std::mutex> lock2(other.consciousness_mutex_);
+    
+    // Создаем квантовую запутанность между двумя системами сознания
+    consciousness_.state = ConsciousnessState::ENTANGLED;
+    other.consciousness_.state = ConsciousnessState::ENTANGLED;
+    
+    // Синхронизируем волновые функции
+    std::complex<double> avg_wave_function = (consciousness_.wave_function + other.consciousness_.wave_function) / 2.0;
+    consciousness_.wave_function = avg_wave_function;
+    other.consciousness_.wave_function = avg_wave_function;
+    
+    // Синхронизируем амплитуды состояний
+    for (size_t i = 0; i < consciousness_.state_amplitudes.size(); ++i) {
+        std::complex<double> avg_amplitude = (consciousness_.state_amplitudes[i] + other.consciousness_.state_amplitudes[i]) / 2.0;
+        consciousness_.state_amplitudes[i] = avg_amplitude;
+        other.consciousness_.state_amplitudes[i] = avg_amplitude;
     }
     
-    // Calculate entropy
-    std::sort(frequencies.begin(), frequencies.end());
-    for (size_t i = 0; i < frequencies.size(); ++i) {
-        if (frequencies[i] > 0.0) {
-            double p = static_cast<double>(i + 1) / frequencies.size();
-            entropy -= p * std::log2(p);
+    // Нормализуем обе системы
+    normalizeStateAmplitudes();
+    other.normalizeStateAmplitudes();
+}
+
+QuantumConsciousness ConsciousnessHybrid::getCurrentState() const {
+    std::lock_guard<std::mutex> lock(consciousness_mutex_);
+    return consciousness_;
+}
+
+void ConsciousnessHybrid::addObserver(std::function<void(const QuantumConsciousness&)> observer) {
+    std::lock_guard<std::mutex> lock(consciousness_mutex_);
+    observers_.push_back(observer);
+}
+
+void ConsciousnessHybrid::cleanup() {
+    std::lock_guard<std::mutex> lock(consciousness_mutex_);
+    observers_.clear();
+}
+
+void ConsciousnessHybrid::updateStateSuperposition(double dt) {
+    // Обновляем суперпозицию состояний с учетом квантовых флуктуаций
+    
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    static std::normal_distribution<double> noise(0.0, 0.01);
+    
+    // Добавляем квантовые флуктуации
+    for (auto& amplitude : consciousness_.state_amplitudes) {
+        double real_noise = noise(gen);
+        double imag_noise = noise(gen);
+        amplitude += std::complex<double>(real_noise, imag_noise) * dt;
+    }
+    
+    // Нормализуем амплитуды
+    normalizeStateAmplitudes();
+    
+    // Определяем доминирующее состояние
+    double max_probability = 0.0;
+    int dominant_state = 0;
+    
+    for (size_t i = 0; i < consciousness_.state_amplitudes.size(); ++i) {
+        double probability = std::norm(consciousness_.state_amplitudes[i]);
+        if (probability > max_probability) {
+            max_probability = probability;
+            dominant_state = static_cast<int>(i);
         }
     }
     
-    // Calculate complexity based on entropy and signal variation
-    double variation = 0.0;
-    for (size_t i = 1; i < signal.size(); ++i) {
-        variation += std::abs(signal[i] - signal[i-1]);
-    }
-    variation /= signal.size();
+    // Обновляем состояние сознания
+    consciousness_.state = static_cast<ConsciousnessState>(dominant_state);
     
-    complexity = (entropy * 0.7) + (variation * 0.3);
-    
-    return std::clamp(complexity / 10.0, 0.0, 1.0);
+    // Обновляем волновую функцию
+    consciousness_.wave_function = consciousness_.state_amplitudes[dominant_state];
 }
 
-void ConsciousnessHybrid::updateHybridState() {
-    if (consciousness_level_ > consciousness_threshold_) {
-        if (hybrid_state_ != HybridState::CONSCIOUS) {
-            hybrid_state_ = HybridState::CONSCIOUS;
-            std::cout << "Hybrid state: CONSCIOUS (level: " << consciousness_level_ << ")" << std::endl;
-        }
-    } else if (consciousness_level_ > consciousness_threshold_ * 0.5) {
-        if (hybrid_state_ != HybridState::PARTIALLY_CONSCIOUS) {
-            hybrid_state_ = HybridState::PARTIALLY_CONSCIOUS;
-            std::cout << "Hybrid state: PARTIALLY_CONSCIOUS (level: " << consciousness_level_ << ")" << std::endl;
-        }
-    } else {
-        if (hybrid_state_ != HybridState::UNCONSCIOUS) {
-            hybrid_state_ = HybridState::UNCONSCIOUS;
-            std::cout << "Hybrid state: UNCONSCIOUS (level: " << consciousness_level_ << ")" << std::endl;
+void ConsciousnessHybrid::normalizeStateAmplitudes() {
+    // Нормализуем амплитуды состояний (сумма квадратов модулей = 1)
+    double total_probability = 0.0;
+    
+    for (const auto& amplitude : consciousness_.state_amplitudes) {
+        total_probability += std::norm(amplitude);
+    }
+    
+    if (total_probability > 0.0) {
+        double normalization_factor = 1.0 / std::sqrt(total_probability);
+        for (auto& amplitude : consciousness_.state_amplitudes) {
+            amplitude *= normalization_factor;
         }
     }
 }
 
-void ConsciousnessHybrid::processConsciousnessSignal(const std::vector<double>& input_signal) {
-    consciousness_buffer_.clear();
-    consciousness_buffer_.reserve(input_signal.size());
+void ConsciousnessHybrid::collapseToState() {
+    // Коллапс квантовой суперпозиции к одному состоянию
     
-    for (double sample : input_signal) {
-        // Apply consciousness-based processing
-        double processed_sample = sample;
-        
-        if (hybrid_state_ == HybridState::CONSCIOUS) {
-            // Full consciousness processing
-            processed_sample *= (1.0 + consciousness_level_ * 0.2);
-            processed_sample += std::sin(consciousness_level_ * M_PI) * 0.1;
-        } else if (hybrid_state_ == HybridState::PARTIALLY_CONSCIOUS) {
-            // Partial consciousness processing
-            processed_sample *= (1.0 + consciousness_level_ * 0.1);
-        } else {
-            // Unconscious processing - minimal changes
-            processed_sample *= (0.9 + consciousness_level_ * 0.1);
-        }
-        
-        consciousness_buffer_.push_back(processed_sample);
-    }
-}
-
-void ConsciousnessHybrid::applyHybridProcessing() {
-    if (consciousness_buffer_.empty()) return;
+    static std::random_device rd;
+    static std::mt19937 gen(rd());
+    static std::uniform_real_distribution<double> dist(0.0, 1.0);
     
-    hybrid_processor_.clear();
-    hybrid_processor_.reserve(consciousness_buffer_.size());
+    double random_value = dist(gen);
+    double cumulative_probability = 0.0;
     
-    std::uniform_real_distribution<double> noise_dist(-0.01, 0.01);
-    
-    for (size_t i = 0; i < consciousness_buffer_.size(); ++i) {
-        double hybrid_sample = consciousness_buffer_[i];
-        
-        // Apply hybrid consciousness effects
-        if (hybrid_state_ == HybridState::CONSCIOUS) {
-            // Add conscious awareness patterns
-            double awareness_pattern = std::sin(2.0 * M_PI * i * consciousness_level_ / 100.0);
-            hybrid_sample += awareness_pattern * 0.05 * hybrid_factor_;
+    for (size_t i = 0; i < consciousness_.state_amplitudes.size(); ++i) {
+        cumulative_probability += std::norm(consciousness_.state_amplitudes[i]);
+        if (random_value <= cumulative_probability) {
+            // Коллапс к состоянию i
+            consciousness_.state = static_cast<ConsciousnessState>(i);
+            consciousness_.wave_function = consciousness_.state_amplitudes[i];
             
-            // Add quantum consciousness effects
-            double quantum_effect = std::cos(consciousness_level_ * M_PI * i / 50.0);
-            hybrid_sample += quantum_effect * 0.03 * hybrid_factor_;
+            // Обнуляем все остальные амплитуды
+            for (size_t j = 0; j < consciousness_.state_amplitudes.size(); ++j) {
+                if (j != i) {
+                    consciousness_.state_amplitudes[j] = std::complex<double>(0.0, 0.0);
+                }
+            }
+            break;
         }
-        
-        // Add subtle noise for consciousness realism
-        hybrid_sample += noise_dist(random_generator_) * consciousness_level_;
-        
-        hybrid_processor_.push_back(hybrid_sample);
     }
 }
 
-std::vector<double> ConsciousnessHybrid::getProcessedSignal() const {
-    return hybrid_processor_.empty() ? consciousness_buffer_ : hybrid_processor_;
+void ConsciousnessHybrid::notifyObservers() {
+    // Уведомляем всех наблюдателей об изменении состояния
+    for (const auto& observer : observers_) {
+        try {
+            observer(consciousness_);
+        } catch (const std::exception& e) {
+            // Игнорируем ошибки в наблюдателях
+        }
+    }
 }
 
-double ConsciousnessHybrid::getConsciousnessLevel() const {
-    return consciousness_level_;
-}
-
-HybridState ConsciousnessHybrid::getHybridState() const {
-    return hybrid_state_;
-}
-
-double ConsciousnessHybrid::getConsciousnessThreshold() const {
-    return consciousness_threshold_;
-}
-
-double ConsciousnessHybrid::getHybridFactor() const {
-    return hybrid_factor_;
-}
-
-void ConsciousnessHybrid::setConsciousnessThreshold(double threshold) {
-    consciousness_threshold_ = std::clamp(threshold, 0.0, 1.0);
-}
-
-void ConsciousnessHybrid::setHybridFactor(double factor) {
-    hybrid_factor_ = std::clamp(factor, 0.0, 1.0);
-}
-
-void ConsciousnessHybrid::initialize() {
-    // Initialize consciousness hybrid system
-    consciousness_level_ = 0.0;
-    hybrid_state_ = HybridState::UNCONSCIOUS;
-}
-
-void ConsciousnessHybrid::shutdown() {
-    // Shutdown consciousness hybrid system
-    consciousness_level_ = 0.0;
-    hybrid_state_ = HybridState::UNCONSCIOUS;
-}
-
-void ConsciousnessHybrid::reset() {
-    consciousness_level_ = 0.0;
-    hybrid_state_ = HybridState::UNCONSCIOUS;
-    consciousness_buffer_.clear();
-    hybrid_processor_.clear();
-}
-
-} // namespace AnantaDigital
+} // namespace AnantaDigital::Consciousness

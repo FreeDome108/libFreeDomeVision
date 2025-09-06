@@ -69,6 +69,9 @@ find_package(Threads REQUIRED)
 add_library(anantadigital_core
     src/anantadigital_core.cpp
     src/quantum_feedback_system.cpp
+    src/consciousness_hybrid.cpp
+    src/consciousness_integration.cpp
+    src/lubomir_understanding.cpp
     src/interference_field.cpp
     src/dome_acoustic_resonator.cpp
 )
@@ -77,7 +80,7 @@ add_library(anantadigital_core
 set_target_properties(anantadigital_core PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER "src/anantadigital_core.hpp;src/quantum_feedback_system.hpp"
+    PUBLIC_HEADER "src/anantadigital_core.hpp;src/quantum_feedback_system.hpp;src/consciousness_hybrid.hpp;src/consciousness_integration.hpp;src/lubomir_understanding.hpp;src/interference_field.hpp;src/dome_acoustic_resonator.hpp"
 )
 
 # Platform-specific library properties
@@ -134,6 +137,11 @@ if(BUILD_EXAMPLES)
         examples/audio_playback_demo.cpp
     )
     target_link_libraries(audio_playback_demo PRIVATE anantadigital_core)
+    
+    add_executable(lubomir_understanding_demo
+        examples/lubomir_understanding_demo.cpp
+    )
+    target_link_libraries(lubomir_understanding_demo PRIVATE anantadigital_core)
     
     # Поиск и подключение аудио библиотек
     find_package(PkgConfig REQUIRED)

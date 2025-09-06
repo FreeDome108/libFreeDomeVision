@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <map>
-#include <memory>
+#include <cmath>
 
 namespace AnantaDigital {
 
@@ -20,26 +20,35 @@ public:
     // Вычислить собственные частоты купола
     std::vector<double> calculateEigenFrequencies() const;
     
-    // Получить акустическое свойство для частоты
+    // Моделирование акустических свойств материалов
+    void setMaterialProperties(const std::map<double, double>& properties);
+    void setAcousticProperty(double frequency, double absorption);
     double getAcousticProperty(double frequency) const;
     
-    // Установить акустическое свойство для частоты
-    void setAcousticProperty(double frequency, double property);
+    // Вычислить время реверберации
+    double calculateReverbTime(double frequency) const;
     
-    // Получить радиус купола
+    // Оптимизация частотной характеристики
+    void optimizeFrequencyResponse(const std::vector<double>& target_frequencies);
+    
+    // Геттеры
     double getRadius() const { return dome_radius_; }
-    
-    // Получить высоту купола
     double getHeight() const { return dome_height_; }
     
-    // Получить все резонансные частоты
+    // Вычислить объем купола
+    double calculateVolume() const;
+    
+    // Вычислить площадь поверхности
+    double calculateSurfaceArea() const;
+    
+    // Получить резонансные частоты
     const std::vector<double>& getResonantFrequencies() const { return resonant_frequencies_; }
     
-    // Обновить геометрию купола
-    void updateGeometry(double radius, double height);
-    
-    // Оптимизировать акустические свойства
-    void optimizeAcousticProperties();
+private:
+    // Приватные методы
+    double calculateDomeEigenFrequency(int n, int m) const;
+    double calculateSphericalHarmonic(int l, int m, double theta, double phi) const;
+    double calculateAcousticImpedance(double frequency) const;
 };
 
 } // namespace AnantaDigital

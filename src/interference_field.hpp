@@ -1,47 +1,13 @@
 #pragma once
 
-#include <complex>
+#include "anantadigital_core.hpp"
 #include <vector>
+#include <memory>
 #include <mutex>
-#include <functional>
-#include <chrono>
+#include <complex>
+#include <cmath>
 
 namespace AnantaDigital {
-
-// Типы интерференционных полей
-enum class InterferenceFieldType {
-    CONSTRUCTIVE,       // Конструктивная интерференция
-    DESTRUCTIVE,        // Деструктивная интерференция
-    PHASE_MODULATED,    // Фазово-модулированная
-    AMPLITUDE_MODULATED,// Амплитудно-модулированная
-    QUANTUM_ENTANGLED   // Квантово-запутанная
-};
-
-// 3D координаты в купольном пространстве
-struct SphericalCoord {
-    double r;       // радиус
-    double theta;   // полярный угол (0-π)
-    double phi;     // азимутальный угол (0-2π)
-    double height;  // высота в куполе
-};
-
-// Комплексное звуковое поле с квантовыми свойствами
-struct QuantumSoundField {
-    std::complex<double> amplitude;
-    double phase;
-    double frequency;
-    enum class QuantumSoundState {
-        COHERENT,           // Когерентное состояние
-        SUPERPOSITION,      // Суперпозиция
-        ENTANGLED,          // Запутанное состояние
-        COLLAPSED           // Коллапсированное состояние
-    } quantum_state;
-    SphericalCoord position;
-    std::chrono::high_resolution_clock::time_point timestamp;
-    
-    // Квантовая волновая функция
-    std::function<std::complex<double>(double, double, double, double)> wave_function;
-};
 
 // Интерференционное поле
 class InterferenceField {
@@ -70,14 +36,23 @@ public:
     // Создать квантовую запутанность между полями
     void createQuantumEntanglement(size_t field1_idx, size_t field2_idx);
     
-    // Получить тип поля
+    // Геттеры
     InterferenceFieldType getType() const { return type_; }
-    
-    // Получить центр поля
     SphericalCoord getCenter() const { return center_position_; }
-    
-    // Получить радиус поля
     double getRadius() const { return field_radius_; }
+    size_t getSourceFieldCount() const { return source_fields_.size(); }
+    
+    // Удалить источник поля
+    void removeSourceField(size_t index);
+    
+    // Очистить все источники
+    void clearSourceFields();
+    
+private:
+    // Приватные методы
+    double calculateDistance(const SphericalCoord& pos1, const SphericalCoord& pos2) const;
+    std::complex<double> calculatePhaseDelay(double distance, double frequency, double time) const;
+    std::complex<double> applyInterferenceType(const std::complex<double>& signal, InterferenceFieldType type) const;
 };
 
 } // namespace AnantaDigital
