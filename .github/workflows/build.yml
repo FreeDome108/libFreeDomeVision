@@ -1,0 +1,85 @@
+name: Build Project
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build for Linux
+        run: ./build_linux.sh
+      - name: Archive Linux build
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-build
+          path: build_linux/
+
+  build_macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build for macOS
+        run: ./build_macos.sh
+      - name: Archive macOS build
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-build
+          path: build_macos/
+
+  build_windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build for Windows
+        run: ./build_windows.bat
+      - name: Archive Windows build
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-build
+          path: build_windows/
+
+  build_android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # NOTE: You might need to set up the Android NDK here.
+      # For example, using an action like 'nckiss/setup-android-ndk'.
+      - name: Build for Android
+        run: ./build_android.sh
+      - name: Archive Android build
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-build
+          path: build_android/
+
+  build_ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      # NOTE: The default Xcode version on the runner might be sufficient,
+      # but you can specify a version if needed.
+      - name: Build for iOS
+        run: ./build_ios.sh
+      - name: Archive iOS build
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-build
+          path: build_ios/
+
+  build_avrora:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # NOTE: You will likely need to install custom dependencies
+      # for the Avrora platform build.
+      - name: Build for Avrora
+        run: ./build_avrora.sh
+      - name: Archive Avrora build
+        uses: actions/upload-artifact@v3
+        with:
+          name: avrora-build
+          path: build_avrora/

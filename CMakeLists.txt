@@ -173,6 +173,7 @@ if(BUILD_TESTS)
         tests/test_freedomevision_core.cpp
         tests/test_quantum_feedback.cpp
         tests/test_consciousness.cpp
+        tests/test_lubomir_understanding.cpp
     )
     target_link_libraries(freedomevision_tests PRIVATE freedomevision_core)
     
