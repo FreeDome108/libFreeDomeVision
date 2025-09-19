@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(anAntaDigital VERSION 2.1.0 LANGUAGES CXX)
+project(FreeDomeVision VERSION 2.1.0 LANGUAGES CXX)
 
 # Настройка стандарта C++
 set(CMAKE_CXX_STANDARD 17)
@@ -66,8 +66,8 @@ endif()
 find_package(Threads REQUIRED)
 
 # Основная библиотека
-add_library(anantadigital_core
-    src/anantadigital_core.cpp
+add_library(freedomevision_core
+    src/freedomevision_core.cpp
     src/quantum_feedback_system.cpp
     src/consciousness_hybrid.cpp
     src/consciousness_integration.cpp
@@ -77,41 +77,41 @@ add_library(anantadigital_core
 )
 
 # Настройка свойств библиотеки
-set_target_properties(anantadigital_core PROPERTIES
+set_target_properties(freedomevision_core PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER "src/anantadigital_types.hpp;src/anantadigital_core.hpp;src/quantum_feedback_system.hpp;src/consciousness_hybrid.hpp;src/consciousness_integration.hpp;src/lubomir_understanding.hpp;src/interference_field.hpp;src/dome_acoustic_resonator.hpp"
+    PUBLIC_HEADER "src/freedomevision_types.hpp;src/freedomevision_core.hpp;src/quantum_feedback_system.hpp;src/consciousness_hybrid.hpp;src/consciousness_integration.hpp;src/lubomir_understanding.hpp;src/interference_field.hpp;src/dome_acoustic_resonator.hpp"
 )
 
 # Platform-specific library properties
 if(PLATFORM_IOS)
-    set_target_properties(anantadigital_core PROPERTIES
+    set_target_properties(freedomevision_core PROPERTIES
         XCODE_ATTRIBUTE_ONLY_ACTIVE_ARCH NO
         XCODE_ATTRIBUTE_ENABLE_BITCODE NO
         XCODE_ATTRIBUTE_VALIDATE_PRODUCT YES
     )
 elseif(PLATFORM_ANDROID)
-    set_target_properties(anantadigital_core PROPERTIES
+    set_target_properties(freedomevision_core PROPERTIES
         ANDROID_NATIVE_API_LEVEL 21
     )
 endif()
 
 # Подключение зависимостей
-target_link_libraries(anantadigital_core
+target_link_libraries(freedomevision_core
     PUBLIC Threads::Threads
 )
 
 # Включение директорий
-target_include_directories(anantadigital_core
+target_include_directories(freedomevision_core
     PUBLIC
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
         $<INSTALL_INTERFACE:include>
 )
 
 # Компиляционные определения
-target_compile_definitions(anantadigital_core
+target_compile_definitions(freedomevision_core
     PRIVATE
-        ANANTADIGITAL_VERSION="${PROJECT_VERSION}"
+        FREEDOME_VISION_VERSION="${PROJECT_VERSION}"
         $<$<BOOL:${ENABLE_QUANTUM_FEEDBACK}>:ENABLE_QUANTUM_FEEDBACK>
         $<$<BOOL:${PLATFORM_LINUX}>:PLATFORM_LINUX>
         $<$<BOOL:${PLATFORM_MACOS}>:PLATFORM_MACOS>
@@ -123,25 +123,25 @@ target_compile_definitions(anantadigital_core
 
 # Демонстрационные приложения
 if(BUILD_EXAMPLES)
-    add_executable(anantadigital_demo
-        examples/anantadigital_demo.cpp
+    add_executable(freedomevision_demo
+        examples/freedomevision_demo.cpp
     )
-    target_link_libraries(anantadigital_demo PRIVATE anantadigital_core)
+    target_link_libraries(freedomevision_demo PRIVATE freedomevision_core)
     
     add_executable(quantum_acoustic_demo
         examples/quantum_acoustic_demo.cpp
     )
-    target_link_libraries(quantum_acoustic_demo PRIVATE anantadigital_core)
+    target_link_libraries(quantum_acoustic_demo PRIVATE freedomevision_core)
     
     add_executable(audio_playback_demo
         examples/audio_playback_demo.cpp
     )
-    target_link_libraries(audio_playback_demo PRIVATE anantadigital_core)
+    target_link_libraries(audio_playback_demo PRIVATE freedomevision_core)
     
     add_executable(lubomir_understanding_demo
         examples/lubomir_understanding_demo.cpp
     )
-    target_link_libraries(lubomir_understanding_demo PRIVATE anantadigital_core)
+    target_link_libraries(lubomir_understanding_demo PRIVATE freedomevision_core)
     
     # Поиск и подключение аудио библиотек
     find_package(PkgConfig REQUIRED)
@@ -169,54 +169,66 @@ endif()
 if(BUILD_TESTS)
     enable_testing()
     
-    add_executable(anantadigital_tests
-        tests/test_anantadigital_core.cpp
+    add_executable(freedomevision_tests
+        tests/test_freedomevision_core.cpp
         tests/test_quantum_feedback.cpp
         tests/test_consciousness.cpp
     )
-    target_link_libraries(anantadigital_tests PRIVATE anantadigital_core)
+    target_link_libraries(freedomevision_tests PRIVATE freedomevision_core)
     
-    add_test(NAME anantadigital_tests COMMAND anantadigital_tests)
+    add_test(NAME freedomevision_tests COMMAND freedomevision_tests)
 endif()
 
 # Установка
-install(TARGETS anantadigital_core
-    EXPORT anantadigitalTargets
+install(TARGETS freedomevision_core
+    EXPORT FreeDomeVisionTargets
     LIBRARY DESTINATION lib
     ARCHIVE DESTINATION lib
     RUNTIME DESTINATION bin
-    PUBLIC_HEADER DESTINATION include/anantadigital
+    PUBLIC_HEADER DESTINATION include/freedomevision
 )
 
 # Установка заголовочных файлов
 install(DIRECTORY src/
-    DESTINATION include/anantadigital
+    DESTINATION include/freedomevision
     FILES_MATCHING PATTERN "*.hpp"
 )
 
 # Экспорт целей
-install(EXPORT anantadigitalTargets
-    FILE anantadigitalTargets.cmake
-    NAMESPACE anantadigital::
-    DESTINATION lib/cmake/anantadigital
+install(EXPORT FreeDomeVisionTargets
+    FILE FreeDomeVisionTargets.cmake
+    NAMESPACE FreeDomeVision::
+    DESTINATION lib/cmake/FreeDomeVision
 )
 
 # Конфигурационный файл
 include(CMakePackageConfigHelpers)
 write_basic_package_version_file(
-    anantadigitalConfigVersion.cmake
+    FreeDomeVisionConfigVersion.cmake
     VERSION ${PROJECT_VERSION}
     COMPATIBILITY SameMajorVersion
 )
 
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/anantadigitalConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/anantadigitalConfig.cmake"
-    INSTALL_DESTINATION lib/cmake/anantadigital
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/FreeDomeVisionConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/FreeDomeVisionConfig.cmake"
+    INSTALL_DESTINATION lib/cmake/FreeDomeVision
 )
 
 install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/anantadigitalConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/anantadigitalConfigVersion.cmake"
-    DESTINATION lib/cmake/anantadigital
+    "${CMAKE_CURRENT_BINARY_DIR}/FreeDomeVisionConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/FreeDomeVisionConfigVersion.cmake"
+    DESTINATION lib/cmake/FreeDomeVision
+)
+
+# Создание pkg-config файла
+configure_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/freedomevision.pc.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/freedomevision.pc"
+    @ONLY
+)
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/freedomevision.pc"
+    DESTINATION lib/pkgconfig
 )

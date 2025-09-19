@@ -1,255 +1,306 @@
-# anAntaDigital
+# 🎬 FreeDome Vision - Quantum Visual Processing Library
 
-Квантовая акустическая система сознания для купольных пространств.
+**FreeDome Vision** is an advanced quantum-enhanced visual processing library designed for immersive dome projection systems. It provides quantum interference field generation, consciousness hybrid systems, Lubomir understanding capabilities, and specialized visual format support including **ZELIM** and **BORANKO** formats.
 
-## Описание
+## 🌟 Key Features
 
-anAntaDigital - это библиотека для создания квантовых интерференционных полей в купольных акустических пространствах. Система интегрирует квантовую механику, акустику и сознание для создания уникальных звуковых переживаний.
+### 🔬 Quantum Visual Technologies
+- **Quantum Interference Field Generation** - Advanced quantum optics for visual processing
+- **Consciousness Hybrid Systems** - Visual-consciousness interface technologies
+- **Lubomir Understanding** - AI-powered content analysis and optimization
+- **108-Element Quantum Geometry** - Spatial visual processing based on quantum principles
 
-## Возможности
+### 🎨 Visual Processing Capabilities
+- **ZELIM Format Support** - 3D quantum visual format processing
+- **BORANKO Format Support** - 2D graphics with Z-depth and 3D effects
+- **Quantum Stereoscopy** - Automatic 2D to 3D conversion
+- **Dome Acoustic Resonator** - Visual-audio synchronization
 
-- **Квантовые интерференционные поля** - создание сложных звуковых паттернов
-- **Купольные акустические резонаторы** - оптимизация акустики для купольных пространств
-- **Гибридная система сознания** - интеграция квантовых состояний сознания
-- **Кросс-платформенность** - поддержка Linux, macOS, iOS, Android, Avrora, Windows
+### 🏗️ Dome Projection Features
+- **Fisheye Correction** - Automatic distortion correction for dome projection
+- **Multi-projector Support** - Seamless coordination of multiple projectors
+- **Geometric Calibration** - Precise setup for various dome sizes
+- **Edge Blending** - Smooth image mixing from different projectors
+- **Color Correction** - Uniform color reproduction across the dome
 
-## Требования
+### 🌍 Cross-platform Support
+- **Linux** (x86_64, ARM64)
+- **macOS** (Intel, Apple Silicon, Universal)
+- **Windows** (x86_64)
+- **iOS** (Device, Simulator)
+- **Android** (ARM64, ARMv7, x86_64, x86)
+- **Avrora OS** (Russian OS support)
 
-### Общие требования
-- CMake 3.16 или выше
-- C++17 совместимый компилятор
-- pthread (для Linux/macOS)
+## 🚀 Quick Start
 
-### Платформо-специфичные требования
+### Prerequisites
 
-#### Linux
-- GCC 7+ или Clang 5+
-- libportaudio-dev
-- libsndfile1-dev
+- **CMake** 3.16+
+- **C++17** compatible compiler
+- **PortAudio** and **libsndfile** (for audio integration)
+- **pkg-config**
 
-#### macOS
-- Xcode Command Line Tools
-- Homebrew (для зависимостей)
-- portaudio
-- sndfile
+### Installation
 
-#### iOS
-- Xcode 12+
-- iOS SDK 11.0+
-
-#### Android
-- Android NDK r21+
-- CMake 3.18+
-
-#### Avrora
-- AVR-GCC
-- AVR-LIBC
-
-#### Windows
-- Visual Studio 2019+ или MinGW-w64
-- CMake 3.16+
-
-## Сборка
-
-### Быстрая сборка
-
+#### Using pkg-config (Recommended)
 ```bash
-# Сборка для текущей платформы
-./build_all.sh
-
-# Сборка для конкретной платформы
-./build_all.sh linux
-./build_all.sh macos
-./build_all.sh ios
-./build_all.sh android
-./build_all.sh avrora
-
-# Сборка для всех платформ (кроме Windows)
-./build_all.sh all
+pkg-config --cflags --libs freedomevision
 ```
 
-### Детальная сборка
-
-#### Linux
-```bash
-chmod +x build_linux.sh
-./build_linux.sh
+#### Using CMake
+```cmake
+find_package(FreeDomeVision REQUIRED)
+target_link_libraries(your_target FreeDomeVision::freedomevision_core)
 ```
 
-#### macOS
-```bash
-chmod +x build_macos.sh
-./build_macos.sh
-```
-
-#### iOS
-```bash
-chmod +x build_ios.sh
-./build_ios.sh
-```
-
-#### Android
-```bash
-# Установите переменную ANDROID_NDK
-export ANDROID_NDK=/path/to/android-ndk
-
-chmod +x build_android.sh
-./build_android.sh
-```
-
-#### Avrora
-```bash
-chmod +x build_avrora.sh
-./build_avrora.sh
-```
-
-#### Windows
-```cmd
-build_windows.bat
-```
-
-### Ручная сборка с CMake
+### Building from Source
 
 ```bash
-mkdir build
-cd build
+# Clone the repository
+git clone <repository-url>
+cd FreeDomeVision
 
-# Конфигурация
-cmake .. \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DBUILD_SHARED_LIBS=ON \
-    -DBUILD_TESTS=ON \
-    -DBUILD_EXAMPLES=ON \
-    -DENABLE_QUANTUM_FEEDBACK=ON
+# Create build directory
+mkdir build && cd build
 
-# Сборка
+# Configure with CMake
+cmake .. -DCMAKE_BUILD_TYPE=Release \
+         -DBUILD_SHARED_LIBS=ON \
+         -DBUILD_EXAMPLES=ON \
+         -DENABLE_QUANTUM_FEEDBACK=ON
+
+# Build
 make -j$(nproc)
 
-# Тесты
-make test
-
-# Установка
+# Install
 sudo make install
 ```
 
-## Структура проекта
+## 📚 Documentation
+
+### Format Specifications
+- **[ZELIM Format](docs/formats/ZELIM_FORMAT.md)** - 3D quantum visual format specification
+- **[BORANKO Format](docs/formats/BORANKO_FORMAT.md)** - 2D graphics with Z-depth specification
+- **[Classic Formats](docs/classic_formats/)** - Traditional format support documentation
+
+### Quantum Technologies
+- **[Quantum Physics](docs/quantum/QUANTUM_PHYSICS.md)** - Mathematical foundations
+- **[Quantum Technologies](docs/quantum/QUANTUM_TECHNOLOGIES.md)** - Technical overview
+- **[Prism Technology](docs/quantum/PRISM_TECHNOLOGY.md)** - Holographic projection technology
+
+### GitBook Documentation
+- **[Complete Guide](docs/gitbook/)** - Comprehensive documentation
+
+## 🔧 Configuration Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `BUILD_SHARED_LIBS` | Build shared libraries | ON |
+| `BUILD_TESTS` | Build test suite | ON |
+| `BUILD_EXAMPLES` | Build example applications | ON |
+| `ENABLE_QUANTUM_FEEDBACK` | Enable quantum feedback systems | ON |
+
+## 🎨 ZELIM & BORANKO Formats
+
+FreeDome Vision introduces revolutionary visual formats:
+
+### ZELIM Format (3D Quantum Visual)
+- **108-Element System** - Quantum geometry with 108 elements
+- **Quantum States** - Ground, Excited, Superposition, Entangled
+- **3D Holographic Projection** - Real 3D in physical space
+- **Interference Patterns** - Coherent light interference
+
+### BORANKO Format (2D with Z-Depth)
+- **Z-Depth Support** - 3D effects from 2D images
+- **Quantum Stereoscopy** - Automatic 2D→3D conversion
+- **Dome Optimization** - Specialized for dome environments
+- **Parallax Effects** - Depth perception through movement
+
+### Example Usage:
+```cpp
+#include <freedomevision/freedomevision_core.hpp>
+
+// Load ZELIM file
+auto scene = FreeDomeVision::loadZELIM("scene.zelim");
+
+// Configure quantum elements
+scene.setQuantumGeometry(FreeDomeVision::QuantumGeometry::SPHERICAL);
+scene.setElementCount(108);
+
+// Enable quantum interference
+scene.enableQuantumInterference(true);
+
+// Process visual content
+scene.process();
+
+// Load BORANKO file with Z-depth
+auto comic = FreeDomeVision::loadBORANKO("comic.boranko");
+comic.enableQuantumStereoscopy(true);
+comic.setZDepthIntensity(0.8f);
+```
+
+## 🧪 Examples and Demos
+
+### Basic Visual Processing
+```bash
+./freedomevision_demo
+```
+
+### Quantum Acoustic Demo
+```bash
+./quantum_acoustic_demo
+```
+
+### Audio Playback Demo
+```bash
+./audio_playback_demo
+```
+
+### Lubomir Understanding Demo
+```bash
+./lubomir_understanding_demo
+```
+
+## 🏗️ Architecture
 
 ```
-anAntaDigital/
-├── src/                    # Исходный код
-│   ├── anantadigital_core.cpp
-│   ├── anantadigital_core.hpp
-│   ├── quantum_feedback_system.cpp
-│   ├── quantum_feedback_system.hpp
-│   ├── consciousness_hybrid.cpp
-│   ├── consciousness_hybrid.hpp
-│   ├── consciousness_integration.cpp
-│   ├── consciousness_integration.hpp
-│   ├── interference_field.cpp
-│   ├── interference_field.hpp
-│   ├── dome_acoustic_resonator.cpp
-│   └── dome_acoustic_resonator.hpp
-├── examples/               # Примеры использования
-├── tests/                  # Тесты
-├── cmake/                  # CMake конфигурация
-├── build_*.sh             # Скрипты сборки для Unix-систем
-├── build_windows.bat      # Скрипт сборки для Windows
-├── build_all.sh           # Универсальный скрипт сборки
-└── CMakeLists.txt         # Основной CMake файл
+FreeDomeVision/
+├── src/
+│   ├── freedomevision_core.cpp         # Main library core
+│   ├── quantum_feedback_system.cpp     # Quantum feedback
+│   ├── consciousness_hybrid.cpp        # Consciousness interface
+│   ├── consciousness_integration.cpp   # Consciousness integration
+│   ├── lubomir_understanding.cpp       # AI content analysis
+│   ├── interference_field.cpp          # Quantum interference
+│   └── dome_acoustic_resonator.cpp     # Audio-visual sync
+├── docs/
+│   ├── formats/                        # Format specifications
+│   ├── quantum/                        # Quantum documentation
+│   ├── classic_formats/                # Classic format docs
+│   └── gitbook/                        # GitBook documentation
+├── examples/                           # Usage examples
+├── tests/                              # Test suite
+└── debian/                            # Debian packaging
 ```
 
-## Использование
+## 📦 Debian/Ubuntu Packages
 
-### C++ API
+FreeDome Vision is available as Debian/Ubuntu packages:
+
+### Runtime Library
+```bash
+sudo apt install libfreedomevision2
+```
+
+### Development Package
+```bash
+sudo apt install libfreedomevision-dev
+```
+
+### Command-line Tools
+```bash
+sudo apt install freedomevision-tools
+```
+
+## 🔬 Quantum Visual Processing Pipeline
+
+1. **Input Processing** - ZELIM/BORANKO format parsing
+2. **Quantum Analysis** - 108-element quantum geometry processing
+3. **Interference Field Generation** - Quantum optics calculations
+4. **Consciousness Integration** - AI-powered content optimization
+5. **Dome Projection** - Specialized dome visual processing
+6. **Output Rendering** - Multi-projector visual output
+
+## 🎯 Lubomir Understanding System
+
+The integrated AI system provides:
+
+- **Content Analysis** - Automatic scene understanding
+- **Optimization Suggestions** - AI-powered recommendations
+- **Adaptive Processing** - Real-time content adaptation
+- **Quality Enhancement** - Intelligent visual improvements
 
 ```cpp
-#include <anantadigital/anantadigital_core.hpp>
+// Enable Lubomir Understanding
+FreeDomeVision::LubomirUnderstanding ai_system;
+ai_system.initialize();
 
-// Инициализация системы
-AnantaDigital::InterferenceField field(
-    AnantaDigital::InterferenceFieldType::CONSTRUCTIVE,
-    {10.0, M_PI/2, 0.0, 5.0}, // сферические координаты
-    5.0 // радиус поля
-);
+// Analyze content
+auto analysis = ai_system.analyzeContent(scene);
+std::cout << "Content complexity: " << analysis.complexity_score << std::endl;
+std::cout << "Optimization suggestions: " << analysis.suggestions.size() << std::endl;
 
-// Добавление источника звука
-AnantaDigital::QuantumSoundField source;
-source.amplitude = std::complex<double>(1.0, 0.0);
-source.frequency = 440.0; // 440 Hz
-source.position = {5.0, M_PI/4, M_PI/2, 2.5};
-
-field.addSourceField(source);
-
-// Вычисление интерференции
-auto interference = field.calculateInterference(
-    {8.0, M_PI/3, M_PI/4, 3.0}, // точка наблюдения
-    0.0 // время
-);
+// Apply optimizations
+ai_system.applyOptimizations(scene, analysis.suggestions);
 ```
 
-### C API
+## 🌍 Platform-Specific Features
 
-```c
-#include <anantadigital_core.h>
+### Linux
+- Full server-grade optimization
+- Hardware acceleration support
+- Multi-GPU processing
 
-// Инициализация
-anantadigital_initialize();
+### macOS
+- Metal API integration
+- Apple Silicon optimization
+- Universal binary support
 
-// Создание интерференционного поля
-void* field = anantadigital_create_interference_field(
-    0, // CONSTRUCTIVE
-    10.0, 1.57, 0.0, 5.0, // r, theta, phi, height
-    5.0 // radius
-);
+### iOS
+- Mobile dome applications
+- Touch interface integration
+- Camera integration
 
-// Очистка
-anantadigital_shutdown();
-```
+### Android
+- Mobile device support
+- OpenGL ES optimization
+- ARCore integration
 
-## Тестирование
+### Windows
+- DirectX integration
+- Windows Mixed Reality support
+- Hardware acceleration
 
-```bash
-# Запуск всех тестов
-make test
+### Avrora OS
+- Russian OS native support
+- Localized interface
+- Government compliance
 
-# Запуск конкретного теста
-./tests/anantadigital_tests
-```
+## 🐛 Troubleshooting
 
-## Примеры
+### Build Issues
+- Ensure C++17 compiler support
+- Verify PortAudio and libsndfile installation
+- Check pkg-config availability
 
-```bash
-# Сборка примеров
-make examples
+### Runtime Issues
+- Verify quantum feedback system initialization
+- Check ZELIM/BORANKO file format validity
+- Ensure proper dome calibration
 
-# Запуск демо
-./examples/anantadigital_demo
-./examples/quantum_acoustic_demo
-./examples/audio_playback_demo
-```
+### Performance Issues
+- Enable hardware acceleration
+- Check GPU memory availability
+- Optimize quantum element count
 
-## Установка
+## 📄 License
 
-После успешной сборки библиотека устанавливается в системные директории:
+FreeDome Vision is licensed under [License Name]. See LICENSE file for details.
 
-- **Linux/macOS**: `/usr/local/lib` и `/usr/local/include/anantadigital`
-- **Windows**: `install/lib` и `install/include/anantadigital`
-- **iOS/Android**: `build_*/install/*/lib` и `build_*/install/*/include/anantadigital`
+## 🤝 Contributing
 
-## Лицензия
+We welcome contributions to FreeDome Vision! Please see CONTRIBUTING.md for guidelines.
 
-[Укажите вашу лицензию здесь]
+### Development Roadmap
+- **v2.2.0** - Enhanced quantum interference algorithms
+- **v2.3.0** - Improved Lubomir Understanding AI
+- **v3.0.0** - Real-time ray tracing support
+- **v3.1.0** - Advanced consciousness integration
 
-## Поддержка
+## 📞 Support
 
-Для получения поддержки создайте issue в репозитории или свяжитесь с командой разработки.
+For support, please create an issue in the repository or contact the development team.
 
-## Вклад в проект
+---
 
-Мы приветствуем вклад в развитие проекта! Пожалуйста, создайте pull request или обсудите изменения в issue.
-
-## История версий
-
-- **2.1.0** - Текущая версия с поддержкой всех платформ
-- **2.0.0** - Переход на C++17 и новая архитектура
-- **1.0.0** - Первая стабильная версия
+**FreeDome Vision** - Revolutionizing visual processing with quantum technology 🎬✨

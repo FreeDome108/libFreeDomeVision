@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# anAntaDigital Multi-Platform Build Script
+# FreeDome Vision Multi-Platform Build Script
 # Supports: Linux, macOS, iOS, Android, Avrora, Windows
 
 set -e
@@ -17,7 +17,7 @@ BUILD_DIR="build"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
 
-echo -e "${BLUE}=== anAntaDigital Multi-Platform Build Script ===${NC}"
+echo -e "${BLUE}=== FreeDome Vision Multi-Platform Build Script ===${NC}"
 echo -e "${BLUE}Project Directory: ${PROJECT_DIR}${NC}"
 
 # Function to print colored output
