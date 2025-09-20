@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(FreeDomeVision VERSION 2.1.0 LANGUAGES CXX)
+project(FreeDomeVision VERSION 2.2.0 LANGUAGES CXX)
 
 # Настройка стандарта C++
 set(CMAKE_CXX_STANDARD 17)
@@ -74,13 +74,15 @@ add_library(freedomevision_core
     src/lubomir_understanding.cpp
     src/interference_field.cpp
     src/dome_acoustic_resonator.cpp
+    src/format_handler.cpp
+    src/gpu_processor.cpp
 )
 
 # Настройка свойств библиотеки
 set_target_properties(freedomevision_core PROPERTIES
     VERSION ${PROJECT_VERSION}
     SOVERSION ${PROJECT_VERSION_MAJOR}
-    PUBLIC_HEADER "src/freedomevision_types.hpp;src/freedomevision_core.hpp;src/quantum_feedback_system.hpp;src/consciousness_hybrid.hpp;src/consciousness_integration.hpp;src/lubomir_understanding.hpp;src/interference_field.hpp;src/dome_acoustic_resonator.hpp"
+    PUBLIC_HEADER "src/freedomevision_types.hpp;src/freedomevision_core.hpp;src/quantum_feedback_system.hpp;src/consciousness_hybrid.hpp;src/consciousness_integration.hpp;src/lubomir_understanding.hpp;src/interference_field.hpp;src/dome_acoustic_resonator.hpp;src/format_handler.hpp;src/gpu_processor.hpp"
 )
 
 # Platform-specific library properties
@@ -142,6 +144,12 @@ if(BUILD_EXAMPLES)
         examples/lubomir_understanding_demo.cpp
     )
     target_link_libraries(lubomir_understanding_demo PRIVATE freedomevision_core)
+    
+    # Демо форматов и GPU
+    add_executable(format_gpu_demo
+        examples/format_gpu_demo.cpp
+    )
+    target_link_libraries(format_gpu_demo PRIVATE freedomevision_core)
     
     # Поиск и подключение аудио библиотек
     find_package(PkgConfig REQUIRED)

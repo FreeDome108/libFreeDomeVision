@@ -94,4 +94,8 @@ namespace AnantaDigital {
         SystemStatistics getStatistics() const;
     };
 
+    // Включение новых модулей
+    #include "format_handler.hpp"
+    #include "gpu_processor.hpp"
+
 } // namespace AnantaDigital
